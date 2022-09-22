@@ -1,5 +1,4 @@
-﻿using ModdingUtils.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,38 +9,36 @@ using UnityEngine;
 
 namespace TCTC.Cards
 {
-    class DesignSpace : CustomCard
+    class Tracer : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been setup.");
+
+            statModifiers.attackSpeedMultiplier = 0.1f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
-            statModifiers.health = 5f;
-            statModifiers.sizeMultiplier = 5f;
-            gun.bulletDamageMultiplier = 0.01f;
-            
-
-
-
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
+
+
+            //add teleport on bullet bounce, add a limiting factor so it does not get crazy.
+            // teleport via transform.position (same as teleport card)
+            
+
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been removed from player {player.playerID}.");
             //Run when the card is removed from the player
         }
 
         protected override string GetTitle()
         {
-            return "DesignSpace";
+            return "Tracer";
         }
         protected override string GetDescription()
         {
-            return "Sometimes you just have to work with what you got";
+            return "Teleport to where your shot lands";
         }
         protected override GameObject GetCardArt()
         {
@@ -57,23 +54,9 @@ namespace TCTC.Cards
             {
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "Health",
-                    amount = "+400%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
                     positive = false,
-                    stat = "Size",
-                    amount = "+400%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Damage",
-                    amount = "-99%",
+                    stat = "Attackspeed",
+                    amount = "-90%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
