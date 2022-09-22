@@ -36,6 +36,7 @@ namespace TCTC
         {
             CustomCard.BuildCard<DesignSpace>();
             CustomCard.BuildCard<Streamlined>();
+            CustomCard.BuildCard<Waffle>();
             instance = this;
         }
     }
