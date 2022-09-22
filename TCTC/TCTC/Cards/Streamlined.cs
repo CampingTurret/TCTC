@@ -1,5 +1,4 @@
-﻿using ModdingUtils.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,38 +9,31 @@ using UnityEngine;
 
 namespace TCTC.Cards
 {
-    class DesignSpace : CustomCard
+    class Streamlined : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been setup.");
+            statModifiers.health = 0.5f;
+            statModifiers.movementSpeed = 1.5f;
+
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
-            statModifiers.health = 3f;
-            statModifiers.sizeMultiplier = 4f;
-            gun.bulletDamageMultiplier = 0.01f;
-            
-
-
-
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been removed from player {player.playerID}.");
             //Run when the card is removed from the player
         }
 
         protected override string GetTitle()
         {
-            return "DesignSpace";
+            return "Streamlined";
         }
         protected override string GetDescription()
         {
-            return "Sometimes you just have to work with what you got";
+            return "Just assume invisid, incompressible, stationary and far away from the body";
         }
         protected override GameObject GetCardArt()
         {
@@ -58,22 +50,15 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
+                    stat = "Movement speed",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
                     stat = "Health",
-                    amount = "+200%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Size",
-                    amount = "+400%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Damage",
-                    amount = "-99%",
+                    amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

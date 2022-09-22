@@ -32,7 +32,8 @@ namespace TCTC
         }
         void Start()
         {
-            CustomCard.BuildCard<Template>();
+            CustomCard.BuildCard<DesignSpace>();
+            CustomCard.BuildCard<Streamlined>();
             instance = this;
         }
     }
