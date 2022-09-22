@@ -9,10 +9,12 @@ using UnityEngine;
 
 namespace TCTC.Cards
 {
-    class Template : CustomCard
+    class Waffle : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            statModifiers.regen = 30f;
+            statModifiers.gravity = 1.4f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -26,11 +28,11 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "CardName";
+            return "Waffle";
         }
         protected override string GetDescription()
         {
-            return "CardDescription";
+            return "Nom Nom Nom";
         }
         protected override GameObject GetCardArt()
         {
@@ -38,7 +40,7 @@ namespace TCTC.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Rare;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -47,8 +49,22 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Effect",
-                    amount = "No",
+                    stat = "Waffle",
+                    amount = "+1",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Regeneration",
+                    amount = "+30",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Gravity",
+                    amount = "+40%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
