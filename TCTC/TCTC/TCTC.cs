@@ -22,7 +22,7 @@ namespace TCTC
         public static TCTCards instance { get; private set; }
         private const string ModId = "TheCampingTurret.Rounds.TCTC.cards";
         private const string ModName = "TCTCards";
-        public const string Version = "0.0.1"; // What version are we on (major.minor.patch)?
+        public const string Version = "0.2.1"; // What version are we on (major.minor.patch)?
         public const string ModInitials = "TCTC";
 
 
