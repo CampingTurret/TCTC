@@ -9,12 +9,13 @@ using UnityEngine;
 
 namespace TCTC.Cards
 {
-    class Waffle : CustomCard
+    class Coffee : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.regen = 30f;
-            statModifiers.gravity = 1.4f;
+            statModifiers.movementSpeed = 1.2f;
+            statModifiers.attackSpeedMultiplier = 1.2f;
+            block.cdMultiplier = 0.9f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -28,11 +29,11 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "Waffle";
+            return "Coffee";
         }
         protected override string GetDescription()
         {
-            return "Nom Nom Nom";
+            return "The best drink";
         }
         protected override GameObject GetCardArt()
         {
@@ -40,7 +41,7 @@ namespace TCTC.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -49,22 +50,22 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Waffle",
-                    amount = "+1",
+                    stat = "Movement speed",
+                    amount = "+20%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
-                new CardInfoStat()
+                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Regeneration",
-                    amount = "+30",
+                    stat = "Attack speed",
+                    amount = "+20%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
-                new CardInfoStat()
+                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "Gravity",
-                    amount = "+40%",
+                    positive = true,
+                    stat = "Block cooldown",
+                    amount = "-10%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
