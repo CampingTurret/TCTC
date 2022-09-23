@@ -9,13 +9,10 @@ using UnityEngine;
 
 namespace TCTC.Cards
 {
-    class Coffee : CustomCard
+    class Template : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.movementSpeed = 1.2f;
-            statModifiers.attackSpeedMultiplier = 1.2f;
-            block.cdMultiplier = 0.9f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -29,11 +26,11 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "Coffee";
+            return "CardName";
         }
         protected override string GetDescription()
         {
-            return "The best drink";
+            return "CardDescription";
         }
         protected override GameObject GetCardArt()
         {
@@ -41,7 +38,7 @@ namespace TCTC.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -50,22 +47,8 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Movement speed",
-                    amount = "+20%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                 new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Attack speed",
-                    amount = "+20%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                 new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Block cooldown",
-                    amount = "-10%",
+                    stat = "Effect",
+                    amount = "No",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
