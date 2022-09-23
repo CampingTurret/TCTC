@@ -38,6 +38,7 @@ namespace TCTC
             CustomCard.BuildCard<Streamlined>();
             CustomCard.BuildCard<Waffle>();
             CustomCard.BuildCard<Coffee>();
+            CustomCard.BuildCard<Compactteleporter>();
             instance = this;
         }
     }
