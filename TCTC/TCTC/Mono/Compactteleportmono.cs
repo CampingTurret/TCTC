@@ -26,6 +26,8 @@ namespace TCTC.MonoBehaviors
             player.transform.position = position;
             
             
+            
+            
         }
 
         public Block block;
