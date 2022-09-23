@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace TCTC.Cards
 {
-    class Template : CustomCard
+    class Compactteleporter : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
@@ -26,11 +26,12 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "CardName";
+            return "Compact Teleporter";
         }
         protected override string GetDescription()
         {
-            return "CardDescription";
+            return "Why did i attach a teleporter to a bullet? " +
+                "Well because i can!";
         }
         protected override GameObject GetCardArt()
         {
@@ -47,8 +48,8 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Effect",
-                    amount = "No",
+                    stat = "Teleport on bounce",
+                    amount = "Yes",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

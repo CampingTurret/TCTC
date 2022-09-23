@@ -9,10 +9,13 @@ using UnityEngine;
 
 namespace TCTC.Cards
 {
-    class Template : CustomCard
+    class Assumption : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+
+            block.cdAdd = -0.5f;
+            block.cdMultiplier = 0.7f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -26,11 +29,11 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "CardName";
+            return "Assumption";
         }
         protected override string GetDescription()
         {
-            return "CardDescription";
+            return "I'll just assume this value is right";
         }
         protected override GameObject GetCardArt()
         {
@@ -38,7 +41,7 @@ namespace TCTC.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Uncommon;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -47,8 +50,15 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Effect",
-                    amount = "No",
+                    stat = "Block cooldown",
+                    amount = "-0.5s",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Block cooldown",
+                    amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
