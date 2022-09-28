@@ -4,6 +4,8 @@ using UnboundLib.Cards;
 using TCTC.Cards;
 using HarmonyLib;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
+using Unity;
+using UnityEngine;
 
 
 namespace TCTC
@@ -25,6 +27,9 @@ namespace TCTC
         public const string Version = "0.2.2"; // What version are we on (major.minor.patch)?
         public const string ModInitials = "TCTC";
 
+        private static readonly AssetBundle Bundle = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("tctc", typeof(TCTCards).Assembly);
+
+        public static GameObject WaffleArt = Bundle.LoadAsset<GameObject>("C_waffle");
 
         void Awake()
         {

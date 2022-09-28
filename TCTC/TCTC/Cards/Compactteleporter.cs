@@ -14,21 +14,23 @@ namespace TCTC.Cards
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.reflects = 3;
+            
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-
+            
             List<ObjectsToSpawn> list = gun.objectsToSpawn.ToList<ObjectsToSpawn>();
             player.gameObject.AddComponent<Compactteleportermono>();
             ObjectsToSpawn item = ((GameObject)Resources.Load("0 cards/Mayhem")).GetComponent<Gun>().objectsToSpawn[0];
             list.Add(item);
             gun.objectsToSpawn = list.ToArray();
+            gun.reflects = 0;
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            player.gameObject.GetComponent<Compactteleportermono>().Destroy();
             //Run when the card is removed from the player
         }
 
@@ -62,9 +64,9 @@ namespace TCTC.Cards
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
+                    positive = false,
                     stat = "Bounces",
-                    amount = "+3",
+                    amount = "Reset",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
