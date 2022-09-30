@@ -33,7 +33,7 @@ namespace TCTC.Cards
         }
         protected override string GetDescription()
         {
-            return "Just assume invisid, incompressible, stationary and far away from the body";
+            return "Just assume invisid, incompressible, stationary, irrotational and far away from the body ";
         }
         protected override GameObject GetCardArt()
         {

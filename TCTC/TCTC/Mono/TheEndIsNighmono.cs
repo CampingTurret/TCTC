@@ -22,14 +22,23 @@ namespace TCTC.MonoBehaviors
             this.health = base.GetComponent<HealthHandler>();
             secondstodeath = 20f;
             damagecolor = Color.red;
-            
+            timepassed = 0;
+
+
         }
 
         private void Update()
         {
-           dt = Time.deltaTime;
-           damage.Set(data.maxHealth*dt*1/secondstodeath,0);
+            dt = Time.deltaTime;
+            timepassed = timepassed + dt;
 
+            if ( timepassed > 0.1f){
+                damage.Set(data.maxHealth * timepassed * 1 / secondstodeath, 0);
+                this.health.DoDamage(damage, player.transform.position, damagecolor);
+                timepassed = 0;
+            }
+           damage.Set(data.maxHealth*dt*1/secondstodeath,0);
+            
            this.health.DoDamage(damage, player.transform.position,damagecolor);
            
 
@@ -43,6 +52,7 @@ namespace TCTC.MonoBehaviors
         private float secondstodeath;
         private float dt;
         Color damagecolor;
+        private float timepassed;
         private HealthHandler health;
         public Block block;
         public Player player;
