@@ -46,6 +46,7 @@ namespace TCTC
             CustomCard.BuildCard<Compactteleporter>();
             CustomCard.BuildCard<Assumption>();
             CustomCard.BuildCard<TheEndIsNigh>();
+// CustomCard.BuildCard<Guess>();
             instance = this;
         }
     }

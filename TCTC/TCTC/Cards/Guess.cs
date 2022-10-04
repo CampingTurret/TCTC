@@ -10,16 +10,17 @@ using TCTC.MonoBehaviors;
 
 namespace TCTC.Cards
 {
-    class Template : CustomCard
+    class Guess : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             
-            //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
+            
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            //Edits values on player when card is selected
+            player.gameObject.AddComponent<Guessmono>();
+
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -28,11 +29,11 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "CardName";
+            return "Random guess";
         }
         protected override string GetDescription()
         {
-            return "CardDescription";
+            return "Every 10 seconds flip a coin, heads means a stat boost, while tails means a penalty";
         }
         protected override GameObject GetCardArt()
         {
@@ -49,8 +50,15 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Effect",
-                    amount = "No",
+                    stat = "on heads:",
+                    amount = "Boost",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "on tails:",
+                    amount = "Penalty",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

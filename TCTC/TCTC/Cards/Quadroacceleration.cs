@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using TCTC.MonoBehaviors;
 
 namespace TCTC.Cards
 {
-    class Template : CustomCard
+    class Quadroacceleration : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            statModifiers.health = 0.7f;
+            statModifiers.movementSpeed = 1.25f;
+            statModifiers.attackSpeedMultiplier = 1.2f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -26,11 +30,11 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "CardName";
+            return "Quadro acceleration";
         }
         protected override string GetDescription()
         {
-            return "CardDescription";
+            return "Pay extra for a driver unlock";
         }
         protected override GameObject GetCardArt()
         {
@@ -47,8 +51,22 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Effect",
-                    amount = "No",
+                    stat = "Movement speed",
+                    amount = "+25%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Attack speed",
+                    amount = "+20%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Health",
+                    amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
