@@ -20,7 +20,7 @@ namespace TCTC.MonoBehaviors
             this.data = base.GetComponent<CharacterData>();
             this.gun = base.GetComponent<Gun>();
             this.health = base.GetComponent<HealthHandler>();
-            secondstodeath = 20f;
+            secondstodeath = 40f;
             damagecolor = Color.red;
             timepassed = 0;
 
@@ -37,9 +37,7 @@ namespace TCTC.MonoBehaviors
                 this.health.DoDamage(damage, player.transform.position, damagecolor);
                 timepassed = 0;
             }
-           damage.Set(data.maxHealth*dt*1/secondstodeath,0);
-            
-           this.health.DoDamage(damage, player.transform.position,damagecolor);
+           
            
 
         }

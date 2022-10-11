@@ -30,7 +30,8 @@ namespace TCTC.Cards
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.GetComponent<Compactteleportermono>().Destroy();
+            Destroy(player.gameObject.GetComponent<Compactteleportermono>());
+            
             //Run when the card is removed from the player
         }
 

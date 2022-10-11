@@ -16,8 +16,8 @@ namespace TCTC.Cards
         {
             
             gun.bulletDamageMultiplier = 3f;
-            statModifiers.movementSpeed = 1.5f;
-            statModifiers.health = 1.5f;
+            statModifiers.movementSpeed = 2f;
+            statModifiers.health = 2f;
             
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -28,13 +28,13 @@ namespace TCTC.Cards
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            
+            Destroy(player.gameObject.GetComponent<TheEndIsNighmono>());
             //Run when the card is removed from the player
         }
 
         protected override string GetTitle()
         {
-            return "The End in nigh";
+            return "The End is nigh";
         }
         protected override string GetDescription()
         {
@@ -56,7 +56,7 @@ namespace TCTC.Cards
                 {
                     positive = false,
                     stat = "Death timer",
-                    amount = "20 seconds",
+                    amount = "40 seconds",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
@@ -70,14 +70,14 @@ namespace TCTC.Cards
                 {
                     positive = true,
                     stat = "Movement speed",
-                    amount = "+50%",
+                    amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+50%",
+                    amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

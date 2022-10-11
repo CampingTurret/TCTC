@@ -6,34 +6,36 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using TCTC.MonoBehaviors;
 
 namespace TCTC.Cards
 {
-    class Coffee : CustomCard
+    class Educatedguess : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.movementSpeed = 1.2f;
-            statModifiers.attackSpeedMultiplier = 1.2f;
-            block.cdMultiplier = 0.9f;
-            //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
+            
+            
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            //Edits values on player when card is selected
+            player.gameObject.AddComponent<Educatedguessmono>();
+
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            Destroy(player.gameObject.GetComponent<Educatedguessmono>());
+            
             //Run when the card is removed from the player
         }
 
         protected override string GetTitle()
         {
-            return "Coffee";
+            return "Educated guess";
         }
         protected override string GetDescription()
         {
-            return "The best drink";
+            return "Every 10 seconds flip an unfair coin, heads means a stat boost, while tails means a penalty";
         }
         protected override GameObject GetCardArt()
         {
@@ -50,22 +52,15 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Movement speed",
-                    amount = "+20%",
+                    stat = "on heads:",
+                    amount = "Boost",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
-                 new CardInfoStat()
+                new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "Attack speed",
-                    amount = "+30%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                 new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Block cooldown",
-                    amount = "-20%",
+                    positive = false,
+                    stat = "on tails:",
+                    amount = "Debuff",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

@@ -10,7 +10,7 @@ using TCTC.MonoBehaviors;
 
 namespace TCTC.Cards
 {
-    class Guess : CustomCard
+    class Noguesswork : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
@@ -19,21 +19,23 @@ namespace TCTC.Cards
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.AddComponent<Guessmono>();
+            player.gameObject.AddComponent<noguessworkmono>();
 
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            Destroy(player.gameObject.GetComponent<noguessworkmono>());
+            
             //Run when the card is removed from the player
         }
 
         protected override string GetTitle()
         {
-            return "Random guess";
+            return "No guess work";
         }
         protected override string GetDescription()
         {
-            return "Every 10 seconds flip a coin, heads means a stat boost, while tails means a penalty";
+            return "Every 10 seconds gain a diffrent boost";
         }
         protected override GameObject GetCardArt()
         {
@@ -41,7 +43,7 @@ namespace TCTC.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Rare;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -50,17 +52,11 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "on heads:",
-                    amount = "Boost",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "on tails:",
-                    amount = "Penalty",
+                    stat = "Boost every 10 seconds",
+                    amount = "true",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
+                
             };
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
