@@ -35,7 +35,7 @@ namespace TCTC.Cards
         }
         protected override string GetDescription()
         {
-            return "Every 10 seconds flip an unfair coin, heads means a stat boost, while tails means a penalty";
+            return "Every 10 seconds flip an unfair coin, heads means a stat boost, while tails means a debuff";
         }
         protected override GameObject GetCardArt()
         {
@@ -53,7 +53,7 @@ namespace TCTC.Cards
                 {
                     positive = true,
                     stat = "on heads:",
-                    amount = "Boost",
+                    amount = "Buff",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

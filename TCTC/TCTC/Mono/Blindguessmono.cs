@@ -95,6 +95,9 @@ namespace TCTC.MonoBehaviors
         public override void OnStart()
         {
             base.gunStatModifier.bulletDamageMultiplier_mult = 4f;
+
+          
+
             timer = 10f;
         }
 
@@ -109,7 +112,7 @@ namespace TCTC.MonoBehaviors
 
 
         }
-
+        
         float timer;
     }
     public class guess2 : ReversibleEffect
@@ -162,6 +165,8 @@ namespace TCTC.MonoBehaviors
         {
             base.gunAmmoStatModifier.maxAmmo_add = +10;
             timer = 10f;
+
+
         }
 
         public void Update()
@@ -183,8 +188,9 @@ namespace TCTC.MonoBehaviors
     {
         public override void OnStart()
         {
-            base.characterStatModifiers.health = 4f;
+            base.characterStatModifiers.regen = 10f;
             timer = 10f;
+            
         }
 
         public void Update()
@@ -217,10 +223,20 @@ namespace TCTC.MonoBehaviors
             {
                 Destroy();
             }
+            timepassed = timepassed + Time.deltaTime;
+
+            if (timepassed > 0.1f)
+            {
+                damage.Set(data.maxHealth * timepassed * 1 / 20, 0);
+                this.health.DoDamage(damage, player.transform.position, damagecolor);
+                timepassed = 0;
+            }
 
 
         }
-
+        Color damagecolor = Color.red;
         float timer;
+        float timepassed = 0;
+        Vector2 damage;
     }
 }

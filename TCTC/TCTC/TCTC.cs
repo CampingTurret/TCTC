@@ -24,7 +24,7 @@ namespace TCTC
         public static TCTCards instance { get; private set; }
         private const string ModId = "TheCampingTurret.Rounds.TCTC.cards";
         private const string ModName = "TCTCards";
-        public const string Version = "1.0.0"; // What version are we on (major.minor.patch)?
+        public const string Version = "1.1.0"; // What version are we on (major.minor.patch)?
         public const string ModInitials = "TCTC";
 
         private static readonly AssetBundle Bundle = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("tctc", typeof(TCTCards).Assembly);
@@ -50,6 +50,7 @@ namespace TCTC
             CustomCard.BuildCard<Quadroacceleration>();
             CustomCard.BuildCard<Educatedguess>();
             CustomCard.BuildCard<Noguesswork>();
+            CustomCard.BuildCard<Class2estimation>();
             instance = this;
         }
     }

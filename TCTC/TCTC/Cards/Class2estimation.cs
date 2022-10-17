@@ -10,31 +10,35 @@ using TCTC.MonoBehaviors;
 
 namespace TCTC.Cards
 {
-    class Blindguess : CustomCard
+    class Class2estimation : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            statModifiers.health = 1.8f;
+            statModifiers.movementSpeed = 0.8f;
+            statModifiers.sizeMultiplier = 0.9f;
+            statModifiers.gravity = 1.5f;
+
             
             
+            //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.AddComponent<Blindguessmono>();
-
+            //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            Destroy(player.gameObject.GetComponent<Blindguessmono>());
             //Run when the card is removed from the player
         }
 
         protected override string GetTitle()
         {
-            return "Blind guess";
+            return "Class II weight estimation";
         }
         protected override string GetDescription()
         {
-            return "Every 10 seconds flip an fair coin, heads means a stat boost, while tails means a debuff";
+            return "Less statistcs, more calculations";
         }
         protected override GameObject GetCardArt()
         {
@@ -42,7 +46,7 @@ namespace TCTC.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Uncommon;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -51,18 +55,33 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "on heads:",
-                    amount = "Buff",
+                    stat = "Health",
+                    amount = "+80%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Size",
+                    amount = "-10%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "on tails:",
-                    amount = "Debuff",
+                    stat = "Movement speed",
+                    amount = "-20%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Gravity",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
+
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {

@@ -55,8 +55,8 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Death timer",
-                    amount = "40 seconds",
+                    stat = "Till death",
+                    amount = "20 seconds",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

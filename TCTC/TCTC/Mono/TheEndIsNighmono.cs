@@ -20,7 +20,7 @@ namespace TCTC.MonoBehaviors
             this.data = base.GetComponent<CharacterData>();
             this.gun = base.GetComponent<Gun>();
             this.health = base.GetComponent<HealthHandler>();
-            secondstodeath = 40f;
+            secondstodeath = 20f;
             damagecolor = Color.red;
             timepassed = 0;
 

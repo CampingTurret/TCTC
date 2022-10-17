@@ -52,7 +52,7 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Boost every 10 seconds",
+                    stat = "Diffrent buff every 10 seconds",
                     amount = "true",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }

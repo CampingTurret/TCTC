@@ -37,6 +37,7 @@ namespace TCTC.MonoBehaviors
                 {
                     case 1:
                         player.gameObject.AddComponent<guess1>();
+                       
                         timer = 0f;
                         break;
                     case 2:
