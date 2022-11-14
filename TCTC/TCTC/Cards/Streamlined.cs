@@ -14,7 +14,7 @@ namespace TCTC.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             statModifiers.health = 0.5f;
-            statModifiers.movementSpeed = 1.5f;
+            statModifiers.movementSpeed = 1.6f;
 
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -33,7 +33,7 @@ namespace TCTC.Cards
         }
         protected override string GetDescription()
         {
-            return "Just assume invisid, incompressible, stationary, irrotational and far away from the body ";
+            return "Bernouli rules here";
         }
         protected override GameObject GetCardArt()
         {
@@ -51,7 +51,7 @@ namespace TCTC.Cards
                 {
                     positive = true,
                     stat = "Movement speed",
-                    amount = "+50%",
+                    amount = "+60%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

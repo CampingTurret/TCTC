@@ -46,13 +46,7 @@ namespace TCTC.Cards
         {
             return new CardInfoStat[]
             {
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Waffle",
-                    amount = "+1",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
+               
                 new CardInfoStat()
                 {
                     positive = true,

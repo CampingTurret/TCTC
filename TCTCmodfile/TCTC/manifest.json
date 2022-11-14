@@ -1,8 +1,8 @@
 {
   "name": "TCTC",
-  "version_number": "1.1.0",
+  "version_number": "1.2.1",
   "website_url": "",
-  "description": "Adds 12 cards. Has a slight engineering student theme.",
+  "description": "Adds 13 cards. Has a slight engineering student theme.",
   "dependencies": [
     "willis81808-MMHook-1.0.0",
     "BepInEx-BepInExPack_ROUNDS-5.4.1900",

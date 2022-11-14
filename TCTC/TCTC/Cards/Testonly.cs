@@ -10,17 +10,22 @@ using TCTC.MonoBehaviors;
 
 namespace TCTC.Cards
 {
-    class Quadroacceleration : CustomCard
+    class Test : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.7f;
-            statModifiers.movementSpeed = 1.3f;
-            statModifiers.attackSpeedMultiplier = 1.2f;
+            
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+
+            if(player.GetComponent<UIhandelermono>() == null)
+            {
+                player.gameObject.AddComponent<UIhandelermono>();
+            }
+            
+            
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -30,11 +35,11 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "Quadro acceleration";
+            return "Testonly";
         }
         protected override string GetDescription()
         {
-            return "Pay extra for a driver unlock";
+            return "If you see this i made an error, let me know in the discord server (TheCampingTurret#4072)";
         }
         protected override GameObject GetCardArt()
         {
@@ -51,22 +56,8 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Movement speed",
-                    amount = "+30%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Attack speed",
-                    amount = "+25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Health",
-                    amount = "-30%",
+                    stat = "TEST",
+                    amount = "TEST",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

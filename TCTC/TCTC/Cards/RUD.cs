@@ -10,31 +10,32 @@ using TCTC.MonoBehaviors;
 
 namespace TCTC.Cards
 {
-    class Quadroacceleration : CustomCard
+    class RUD : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.7f;
-            statModifiers.movementSpeed = 1.3f;
-            statModifiers.attackSpeedMultiplier = 1.2f;
+            statModifiers.health = 1.5f;
+            gun.bulletDamageMultiplier = 2f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            player.gameObject.AddComponent<RUDmono>();
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            Destroy(player.gameObject.GetComponent<RUDmono>());
             //Run when the card is removed from the player
         }
 
         protected override string GetTitle()
         {
-            return "Quadro acceleration";
+            return "Rapid Unplanned Disassembly";
         }
         protected override string GetDescription()
         {
-            return "Pay extra for a driver unlock";
+            return "Everything is fine...  Just be carefull when you block.";
         }
         protected override GameObject GetCardArt()
         {
@@ -42,33 +43,28 @@ namespace TCTC.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Uncommon;
         }
         protected override CardInfoStat[] GetStats()
         {
             return new CardInfoStat[]
             {
+                
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Movement speed",
-                    amount = "+30%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Attack speed",
-                    amount = "+25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
                     stat = "Health",
-                    amount = "-30%",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Damage",
+                    amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
+
             };
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()

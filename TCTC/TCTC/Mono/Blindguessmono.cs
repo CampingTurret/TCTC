@@ -30,10 +30,12 @@ namespace TCTC.MonoBehaviors
             dt = Time.deltaTime;
             timer = timer + dt;
 
-            if (timer > 10f)
+            if (timer > 5f)
             {
 
-                a = UnityEngine.Random.Range(1, 6);
+                a = UnityEngine.Random.Range(0.6f, 6.4f);
+
+                
                 switch (Math.Floor(Math.Round(a)))
                 {
                     case 1:
@@ -98,7 +100,7 @@ namespace TCTC.MonoBehaviors
 
           
 
-            timer = 10f;
+            timer = 5f;
         }
 
         public void Update()
@@ -120,7 +122,7 @@ namespace TCTC.MonoBehaviors
         public override void OnStart()
         {
             base.gunStatModifier.bulletDamageMultiplier_mult = 0.3f;
-            timer = 10f;
+            timer = 5f;
         }
 
         public void Update()
@@ -142,7 +144,7 @@ namespace TCTC.MonoBehaviors
         public override void OnStart()
         {
             base.gunAmmoStatModifier.maxAmmo_add = -10;
-            timer = 10f;
+            timer = 5f;
         }
 
         public void Update()
@@ -164,7 +166,7 @@ namespace TCTC.MonoBehaviors
         public override void OnStart()
         {
             base.gunAmmoStatModifier.maxAmmo_add = +10;
-            timer = 10f;
+            timer = 5f;
 
 
         }
@@ -188,8 +190,8 @@ namespace TCTC.MonoBehaviors
     {
         public override void OnStart()
         {
-            base.characterStatModifiers.regen = 10f;
-            timer = 10f;
+            base.gunStatModifier.bursts_add = 10;
+            timer = 5f;
             
         }
 
@@ -211,8 +213,8 @@ namespace TCTC.MonoBehaviors
     {
         public override void OnStart()
         {
-            base.characterStatModifiers.health = 0.1f;
-            timer = 10f;
+            base.gunStatModifier.bursts_add = -6;
+            timer = 5f;
         }
 
         public void Update()
@@ -225,18 +227,11 @@ namespace TCTC.MonoBehaviors
             }
             timepassed = timepassed + Time.deltaTime;
 
-            if (timepassed > 0.1f)
-            {
-                damage.Set(data.maxHealth * timepassed * 1 / 20, 0);
-                this.health.DoDamage(damage, player.transform.position, damagecolor);
-                timepassed = 0;
-            }
-
 
         }
-        Color damagecolor = Color.red;
+        
         float timer;
         float timepassed = 0;
-        Vector2 damage;
+       
     }
 }

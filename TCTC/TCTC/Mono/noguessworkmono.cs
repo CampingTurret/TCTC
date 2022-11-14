@@ -29,10 +29,10 @@ namespace TCTC.MonoBehaviors
             dt = Time.deltaTime;
             timer = timer + dt;
 
-            if (timer > 10f)
+            if (timer > 5f)
             {
 
-                a = UnityEngine.Random.Range(1, 3);
+                a = UnityEngine.Random.Range(0.6f, 3.4f);
                 switch (Math.Floor(Math.Round(a)))
                 {
                     case 1:

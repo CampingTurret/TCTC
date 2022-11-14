@@ -24,12 +24,18 @@ namespace TCTC
         public static TCTCards instance { get; private set; }
         private const string ModId = "TheCampingTurret.Rounds.TCTC.cards";
         private const string ModName = "TCTCards";
-        public const string Version = "1.1.0"; // What version are we on (major.minor.patch)?
+        public const string Version = "1.2.1"; // What version are we on (major.minor.patch)?
         public const string ModInitials = "TCTC";
 
         private static readonly AssetBundle Bundle = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("tctc", typeof(TCTCards).Assembly);
 
-        public static GameObject WaffleArt = Bundle.LoadAsset<GameObject>("C_waffle");
+        public static GameObject WaffleArt = Bundle.LoadAsset<GameObject>("C_Waffle");
+        public static GameObject CoffeeArt = Bundle.LoadAsset<GameObject>("C_Coffee");
+        public static GameObject BlindGuessArt = Bundle.LoadAsset<GameObject>("C_BlindGuess");
+        public static GameObject EducatedGuessArt = Bundle.LoadAsset<GameObject>("C_EducatedGuess");
+        public static GameObject NoGuessWorkArt = Bundle.LoadAsset<GameObject>("C_NoGuessWork");
+        public static GameObject signal = Bundle.LoadAsset<GameObject>("TCTCCanvas");
+        public static GameObject signalcanvas = Bundle.LoadAsset<GameObject>("TCTCsignal");
 
         void Awake()
         {
@@ -51,6 +57,9 @@ namespace TCTC
             CustomCard.BuildCard<Educatedguess>();
             CustomCard.BuildCard<Noguesswork>();
             CustomCard.BuildCard<Class2estimation>();
+            CustomCard.BuildCard<RUD>();
+            CustomCard.BuildCard<Test>();
+
             instance = this;
         }
     }

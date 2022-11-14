@@ -37,7 +37,7 @@ namespace TCTC.Cards
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return TCTCards.CoffeeArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
