@@ -21,29 +21,58 @@ namespace TCTC.MonoBehaviors
             this.block = base.GetComponent<Block>();
             this.data = base.GetComponent<CharacterData>();
             this.gun = base.GetComponent<Gun>();
-
-            TextMeshProUGUI x = UIelement.GetComponentInChildren<TextMeshProUGUI>();
-            x.text = "Hello World!";
-            x.fontSize = 5;
-            RectTransform q = UIelement.AddComponent<RectTransform>();
-            q.anchorMax = new Vector2(0.8f, 0.9f);
-            q.anchorMin = new Vector2(0.7f, 0.8f);
-            
-            UIelement.transform.localScale = new Vector3(100, 100, 100);
-            GameObject mCanvas = TCTCards.signalcanvas;
-            
-            GameObject UISpawned = Instantiate(UIelement, mCanvas.transform);
+            mCanvas = Instantiate(TCTCards.signalcanvas);
             
 
             
 
+        }
+
+        void Update()
+        {
+            foreach (Element section in elements)
+            {
+                section.activefor = section.activefor - Time.deltaTime;
+
+                if (section.activefor <= 0)
+                {
+                    Destroy(section.UI);
+                    elements.Remove(section);
+                }
+
+                GameObject UIsection = section.UI;
+                RectTransform rectTransform = UIsection.GetComponent<RectTransform>();
+                
+            }
         }
 
 
         void Updatesection(int secnum, string text, Color color)
         {
+            Element element = elements.Find(s => s.num == secnum);
+            element.text = text;
+            element.color = color;
+        }
+
+        void spawnsection(Element e)
+        {
+            //spawn the UI element
+            TextMeshProUGUI x = UIelement.GetComponentInChildren<TextMeshProUGUI>();
+            x.text = e.text;
+            x.fontSize = 5;
+            x.color = e.color;
+            RectTransform q = UIelement.AddComponent<RectTransform>();
+            q.anchorMax = new Vector2(0.8f, 0.9f);
+            q.anchorMin = new Vector2(0.7f, 0.8f);
+            
+            GameObject t = Instantiate(UIelement, mCanvas.transform);
+            e.UI = t;
+            elements.Add(e);
+            return;
 
         }
+
+
         public int Addsection(string text, Color color, float time)
         {
             int secnum = numcount;
@@ -55,7 +84,7 @@ namespace TCTC.MonoBehaviors
             q.num = secnum;
 
             elements.Add(q);
-
+            spawnsection(q);
 
             numcount++;
             return secnum;
@@ -80,10 +109,12 @@ namespace TCTC.MonoBehaviors
         public CharacterData data;
         public Gun gun;
         private GameObject UIelement = TCTCards.signal;
+        private GameObject mCanvas;
         public int numcount;
         class Element
         {
             public int num;
+            public GameObject UI;
             public string text;
             public Color color;
             public float activefor;
