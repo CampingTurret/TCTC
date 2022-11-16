@@ -34,8 +34,8 @@ namespace TCTC
         public static GameObject BlindGuessArt = Bundle.LoadAsset<GameObject>("C_BlindGuess");
         public static GameObject EducatedGuessArt = Bundle.LoadAsset<GameObject>("C_EducatedGuess");
         public static GameObject NoGuessWorkArt = Bundle.LoadAsset<GameObject>("C_NoGuessWork");
-        public static GameObject signal = Bundle.LoadAsset<GameObject>("TCTCCanvas");
-        public static GameObject signalcanvas = Bundle.LoadAsset<GameObject>("TCTCsignal");
+        public static GameObject signal = Bundle.LoadAsset<GameObject>("TCTCsignal");
+        public static GameObject signalcanvas = Bundle.LoadAsset<GameObject>("TCTCCanvas");
 
         void Awake()
         {

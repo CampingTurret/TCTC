@@ -21,28 +21,68 @@ namespace TCTC.MonoBehaviors
             this.block = base.GetComponent<Block>();
             this.data = base.GetComponent<CharacterData>();
             this.gun = base.GetComponent<Gun>();
+            numcount = 0;
+            updatetimer = 0.1f;
+
             mCanvas = Instantiate(TCTCards.signalcanvas);
-            
+            // works: Instantiate(UIelement, mCanvas.transform);
 
             
 
         }
 
-        void Update()
+        void OnDestroy()
         {
+            Destroy(mCanvas);
             foreach (Element section in elements)
             {
-                section.activefor = section.activefor - Time.deltaTime;
+                Destroy(section.UI);
+            }
+        }
+        void test()
+        {
+            Color c = new Color(0, 1, 0, 1);
+            float d = 20f;
+            string h = "HE3";
+            int x = Addsection(h, c, d);
+        }
 
-                if (section.activefor <= 0)
+
+        void Update()
+        {
+
+            updatetimer = updatetimer - Time.deltaTime;
+
+            if (updatetimer <= 0)
+            {
+
+
+                foreach (Element section in elements)
                 {
-                    Destroy(section.UI);
-                    elements.Remove(section);
-                }
+                    section.activefor = section.activefor - Time.deltaTime;
 
-                GameObject UIsection = section.UI;
-                RectTransform rectTransform = UIsection.GetComponent<RectTransform>();
-                
+                    if (section.activefor <= 0)
+                    {
+                        Destroy(section.UI);
+                        elements.Remove(section);
+                    }
+
+                    GameObject UIsection = section.UI;
+                    RectTransform rectTransform = UIsection.GetComponent<RectTransform>();
+
+                    int counter = elements.IndexOf(section) + 1;
+
+                    double c = (counter) / 2;
+                    int q = (int)Math.Round(c);
+                    int d = (int)Math.Pow((-1), counter);
+                    int n = q * 120 * d;
+                    rectTransform.anchoredPosition = new Vector2(n, -21);
+
+
+
+                    counter = counter + 1;
+
+                }
             }
         }
 
@@ -57,24 +97,26 @@ namespace TCTC.MonoBehaviors
         void spawnsection(Element e)
         {
             //spawn the UI element
-            TextMeshProUGUI x = UIelement.GetComponentInChildren<TextMeshProUGUI>();
-            x.text = e.text;
-            x.fontSize = 5;
-            x.color = e.color;
-            RectTransform q = UIelement.AddComponent<RectTransform>();
-            q.anchorMax = new Vector2(0.8f, 0.9f);
-            q.anchorMin = new Vector2(0.7f, 0.8f);
-            
+
             GameObject t = Instantiate(UIelement, mCanvas.transform);
+            TextMeshProUGUI x = t.GetComponentInChildren<TextMeshProUGUI>();
+            x.text = e.text;
+
+            Image f = t.GetComponent<Image>();
+            f.color = e.color;
+
             e.UI = t;
             elements.Add(e);
             return;
 
         }
+        
 
 
         public int Addsection(string text, Color color, float time)
         {
+
+            
             int secnum = numcount;
 
             Element q = new Element();
@@ -82,8 +124,8 @@ namespace TCTC.MonoBehaviors
             q.activefor = time;
             q.color = color;
             q.num = secnum;
+            
 
-            elements.Add(q);
             spawnsection(q);
 
             numcount++;
@@ -103,13 +145,14 @@ namespace TCTC.MonoBehaviors
 
 
 
-        private List<Element> elements;
+        private List<Element> elements = new List<Element>();
         public Block block;
         public Player player;
         public CharacterData data;
         public Gun gun;
         private GameObject UIelement = TCTCards.signal;
         private GameObject mCanvas;
+        private float updatetimer;
         public int numcount;
         class Element
         {

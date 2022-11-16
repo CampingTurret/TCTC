@@ -20,6 +20,10 @@ namespace TCTC.Cards
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             player.gameObject.AddComponent<Blindguessmono>();
+            if (player.GetComponent<UIhandelermono>() == null)
+            {
+                player.gameObject.AddComponent<UIhandelermono>();
+            }
 
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

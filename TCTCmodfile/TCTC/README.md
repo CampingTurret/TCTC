@@ -2,6 +2,9 @@
 
 ## V 1.2.1
 
+UI
+- The Guess cards now show which effect is active. (top of the screen)
+
 new art
 - Blind Guess now has art
 - Educated Guess now has art

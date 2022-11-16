@@ -97,10 +97,12 @@ namespace TCTC.MonoBehaviors
         public override void OnStart()
         {
             base.gunStatModifier.bulletDamageMultiplier_mult = 4f;
-
-          
-
             timer = 5f;
+            UIhandelermono UI = player.GetComponent<UIhandelermono>();
+            UI.Addsection("DAMAGE+", new Color(0, 1, 0, 1), timer);
+
+
+           
         }
 
         public void Update()
@@ -123,6 +125,8 @@ namespace TCTC.MonoBehaviors
         {
             base.gunStatModifier.bulletDamageMultiplier_mult = 0.3f;
             timer = 5f;
+            UIhandelermono UI = player.GetComponent<UIhandelermono>();
+            UI.Addsection("DAMAGE-", new Color(1,0, 0, 1), timer);
         }
 
         public void Update()
@@ -145,6 +149,9 @@ namespace TCTC.MonoBehaviors
         {
             base.gunAmmoStatModifier.maxAmmo_add = -10;
             timer = 5f;
+            UIhandelermono UI = player.GetComponent<UIhandelermono>();
+            UI.Addsection("AMMO-", new Color(1,0,0,1),timer);
+            
         }
 
         public void Update()
@@ -167,7 +174,8 @@ namespace TCTC.MonoBehaviors
         {
             base.gunAmmoStatModifier.maxAmmo_add = +10;
             timer = 5f;
-
+            UIhandelermono UI = player.GetComponent<UIhandelermono>();
+            UI.Addsection("AMMO+", new Color(0, 1, 0, 1), timer);
 
         }
 
@@ -192,7 +200,9 @@ namespace TCTC.MonoBehaviors
         {
             base.gunStatModifier.bursts_add = 10;
             timer = 5f;
-            
+            UIhandelermono UI = player.GetComponent<UIhandelermono>();
+            UI.Addsection("BULLET+", new Color(0, 1, 0, 1), timer);
+
         }
 
         public void Update()
@@ -215,6 +225,8 @@ namespace TCTC.MonoBehaviors
         {
             base.gunStatModifier.bursts_add = -6;
             timer = 5f;
+            UIhandelermono UI = player.GetComponent<UIhandelermono>();
+            UI.Addsection("BULLET-", new Color(1,0, 0, 1), timer);
         }
 
         public void Update()
