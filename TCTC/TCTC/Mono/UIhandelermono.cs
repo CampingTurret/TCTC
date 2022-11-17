@@ -10,6 +10,10 @@ using TMPro;
 using UnboundLib.Utils;
 using System.Collections.ObjectModel;
 using ModdingUtils.RoundsEffects;
+using Photon.Pun;
+
+
+
 
 namespace TCTC.MonoBehaviors
 {
@@ -22,10 +26,20 @@ namespace TCTC.MonoBehaviors
             this.data = base.GetComponent<CharacterData>();
             this.gun = base.GetComponent<Gun>();
             numcount = 0;
-            updatetimer = 0.1f;
+            updatetimer = 0.2f;
+            active = true;
 
-            mCanvas = Instantiate(TCTCards.signalcanvas);
-            // works: Instantiate(UIelement, mCanvas.transform);
+            //from cards plus (adware)
+            
+            var temp = PlayerManager.instance.players.Where(p => p.playerID == player.playerID).FirstOrDefault();
+            if (!temp || !temp.data.view.IsMine)
+            {
+                active = false;
+            }
+
+            
+            mCanvas = Instantiate(TCTCards.signalcanvas, player.transform) ;
+            
 
             
 
@@ -51,38 +65,52 @@ namespace TCTC.MonoBehaviors
         void Update()
         {
 
-            updatetimer = updatetimer - Time.deltaTime;
-
-            if (updatetimer <= 0)
+            if (active)
             {
 
 
-                foreach (Element section in elements)
+                mCanvas.SetActive(active);
+                updatetimer = updatetimer - Time.deltaTime;
+                waited = waited + Time.deltaTime;
+                if (updatetimer <= 0)
                 {
-                    section.activefor = section.activefor - Time.deltaTime;
 
-                    if (section.activefor <= 0)
+
+                    foreach (Element section in elements)
                     {
-                        Destroy(section.UI);
-                        elements.Remove(section);
+                        section.activefor = section.activefor - waited;
+
+                        if (section.activefor <= 0)
+                        {
+                            Destroy(section.UI);
+                            elements.Remove(section);
+                        }
+
+
+
+                        GameObject UIsection = section.UI;
+                        RectTransform rectTransform = UIsection.GetComponent<RectTransform>();
+
+                        int counter = elements.IndexOf(section) + 1;
+
+                        double c = (counter) / 2;
+                        int q = (int)Math.Round(c);
+                        int d = (int)Math.Pow((-1), counter);
+                        int n = q * 120 * d;
+                        rectTransform.anchoredPosition = new Vector2(n, -21);
+
+
+
+                        counter = counter + 1;
+
                     }
-
-                    GameObject UIsection = section.UI;
-                    RectTransform rectTransform = UIsection.GetComponent<RectTransform>();
-
-                    int counter = elements.IndexOf(section) + 1;
-
-                    double c = (counter) / 2;
-                    int q = (int)Math.Round(c);
-                    int d = (int)Math.Pow((-1), counter);
-                    int n = q * 120 * d;
-                    rectTransform.anchoredPosition = new Vector2(n, -21);
-
-
-
-                    counter = counter + 1;
-
+                    updatetimer = 0.2f;
+                    waited = 0;
                 }
+            }
+            else if(!active)
+            {
+                mCanvas.SetActive(false);
             }
         }
 
@@ -144,7 +172,7 @@ namespace TCTC.MonoBehaviors
 
 
 
-
+        public bool active;
         private List<Element> elements = new List<Element>();
         public Block block;
         public Player player;
@@ -154,6 +182,7 @@ namespace TCTC.MonoBehaviors
         private GameObject mCanvas;
         private float updatetimer;
         public int numcount;
+        private float waited;
         class Element
         {
             public int num;

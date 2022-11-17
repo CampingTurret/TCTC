@@ -42,7 +42,7 @@ namespace TCTC.Cards
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return TCTCards.Class2Art;
         }
         protected override CardInfo.Rarity GetRarity()
         {

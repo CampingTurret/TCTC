@@ -9,6 +9,7 @@ new art
 - Blind Guess now has art
 - Educated Guess now has art
 - No Guess Work now has art
+- Class II weight estimation now has art 
 
 ## v 1.2.0
 

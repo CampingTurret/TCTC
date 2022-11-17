@@ -39,7 +39,7 @@ namespace TCTC.Cards
         }
         protected override string GetDescription()
         {
-            return "Every 5 seconds gain a diffrent boost";
+            return "Every 5 seconds gain a different boost";
         }
         protected override GameObject GetCardArt()
         {
@@ -56,7 +56,7 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Diffrent buff every 5 seconds",
+                    stat = "Different buff every 5 seconds",
                     amount = "true",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }

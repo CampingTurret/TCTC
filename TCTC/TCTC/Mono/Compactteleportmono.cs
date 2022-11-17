@@ -25,6 +25,7 @@ namespace TCTC.MonoBehaviors
         {
             
             player.transform.position = position;
+
             
             
             

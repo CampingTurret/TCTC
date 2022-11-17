@@ -34,8 +34,11 @@ namespace TCTC
         public static GameObject BlindGuessArt = Bundle.LoadAsset<GameObject>("C_BlindGuess");
         public static GameObject EducatedGuessArt = Bundle.LoadAsset<GameObject>("C_EducatedGuess");
         public static GameObject NoGuessWorkArt = Bundle.LoadAsset<GameObject>("C_NoGuessWork");
+        public static GameObject Class2Art = Bundle.LoadAsset<GameObject>("C_Class2");
+
         public static GameObject signal = Bundle.LoadAsset<GameObject>("TCTCsignal");
         public static GameObject signalcanvas = Bundle.LoadAsset<GameObject>("TCTCCanvas");
+        
 
         void Awake()
         {
@@ -58,7 +61,7 @@ namespace TCTC
             CustomCard.BuildCard<Noguesswork>();
             CustomCard.BuildCard<Class2estimation>();
             CustomCard.BuildCard<RUD>();
-            CustomCard.BuildCard<Test>();
+            
 
             instance = this;
         }

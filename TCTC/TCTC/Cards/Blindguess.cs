@@ -38,7 +38,7 @@ namespace TCTC.Cards
         }
         protected override string GetDescription()
         {
-            return "Every 5 seconds flip an fair coin, heads means a stat boost, while tails means a debuff";
+            return "Every 5 seconds flip a fair coin, heads means a stat boost, while tails means a debuff";
         }
         protected override GameObject GetCardArt()
         {
