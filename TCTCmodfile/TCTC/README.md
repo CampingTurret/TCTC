@@ -2,6 +2,12 @@
 
 ## V 1.2.1
 
+fixes.
+-changed the description of coffee to accurately reflect what the card does.
+	- attackspeed (+30% to +20%)
+	- block cooldown (-20% to -10%)
+
+
 UI
 - The Guess cards now show which effect is active. (top of the screen)
 
@@ -10,6 +16,10 @@ new art
 - Educated Guess now has art
 - No Guess Work now has art
 - Class II weight estimation now has art 
+
+
+
+
 
 ## v 1.2.0
 
@@ -64,10 +74,6 @@ Added new card
 - Class II weight estimation
 	
 
-
-
-
-	
 
 
 ## v 1.0.0

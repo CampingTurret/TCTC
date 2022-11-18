@@ -58,14 +58,14 @@ namespace TCTC.Cards
                 {
                     positive = true,
                     stat = "Attack speed",
-                    amount = "+30%",
+                    amount = "+20%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                  new CardInfoStat()
                 {
                     positive = true,
                     stat = "Block cooldown",
-                    amount = "-20%",
+                    amount = "-10%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

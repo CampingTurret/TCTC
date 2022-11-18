@@ -147,12 +147,14 @@ namespace TCTC.MonoBehaviors
             
             int secnum = numcount;
 
-            Element q = new Element();
-            q.text = text;
-            q.activefor = time;
-            q.color = color;
-            q.num = secnum;
-            
+            Element q = new Element
+            {
+                text = text,
+                activefor = time,
+                color = color,
+                num = secnum
+            };
+
 
             spawnsection(q);
 
