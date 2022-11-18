@@ -3,7 +3,7 @@
 ## V 1.2.1
 
 fixes.
--changed the description of coffee to accurately reflect what the card does.
+- Changed the description of coffee to accurately reflect what the card does.
 	- attackspeed (+30% to +20%)
 	- block cooldown (-20% to -10%)
 
