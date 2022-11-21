@@ -15,15 +15,13 @@ namespace TCTC.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             
+            
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-
-            if(player.GetComponent<UIhandelermono>() == null)
-            {
-                player.gameObject.AddComponent<UIhandelermono>();
-            }
+            
+            
             
             
             //Edits values on player when card is selected

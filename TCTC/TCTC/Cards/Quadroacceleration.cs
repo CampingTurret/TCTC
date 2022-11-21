@@ -16,7 +16,7 @@ namespace TCTC.Cards
         {
             statModifiers.health = 0.7f;
             statModifiers.movementSpeed = 1.3f;
-            statModifiers.attackSpeedMultiplier = 1.25f;
+            gun.attackSpeed = 0.75f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

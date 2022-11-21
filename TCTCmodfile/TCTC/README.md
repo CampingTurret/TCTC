@@ -1,8 +1,20 @@
 # TCTC
 
+
+
+
+## V 1.2.2
+
+fixes
+- Both coffee and quadro acceleration were giving attackspeed down this has now been fixed
+
+new art
+- 
+
+
 ## V 1.2.1
 
-fixes.
+fixes
 - Changed the description of coffee to accurately reflect what the card does.
 	- attackspeed (+30% to +20%)
 	- block cooldown (-20% to -10%)

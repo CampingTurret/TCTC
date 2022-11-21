@@ -14,7 +14,7 @@ namespace TCTC.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             statModifiers.movementSpeed = 1.2f;
-            statModifiers.attackSpeedMultiplier = 1.2f;
+            gun.attackSpeed = 0.8f;
             block.cdMultiplier = 0.9f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }

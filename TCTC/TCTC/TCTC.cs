@@ -61,6 +61,7 @@ namespace TCTC
             CustomCard.BuildCard<Noguesswork>();
             CustomCard.BuildCard<Class2estimation>();
             CustomCard.BuildCard<RUD>();
+            CustomCard.BuildCard<Test>();
             
 
             instance = this;
