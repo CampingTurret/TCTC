@@ -7,9 +7,16 @@
 
 fixes
 - Both coffee and quadro acceleration were giving attackspeed down this has now been fixed
+- Both coffee and quadro acceleration were applying stats to the wrong variable
+
+Balance changes
+- Streamlined
+	- increased health (-50% to -40%)
+- Waffle
+	- decreased health (0 to -20%)
 
 new art
-- 
+- Assumption now has art
 
 
 ## V 1.2.1
@@ -50,17 +57,17 @@ new card
 
 ## v 1.1.1
 
-Minor balance changes to
+Balance changes to
 - Guess cards 
 	- changes to the buffs and debuffs
 		- removed damage over time and regen, replaced with bullets + and -
 	- changed the time from 10 seconds to 5 seconds
 	- The issue was that the round starting would clear the effects, with this shorter timer the issue should be less noticable.
 - Streamlined
-	- increased movement speed (50 to 60)
+	- increased movement speed (+50% to +60%)
 - Quadro acceleration
-	- increased movement speed (25 to 30)
-	- increased attackspeed (20 to 25)
+	- increased movement speed (+25% to +30%)
+	- increased attackspeed (+20% to +25%)
 
 
 

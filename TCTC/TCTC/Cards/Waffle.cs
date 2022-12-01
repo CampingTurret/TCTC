@@ -14,6 +14,7 @@ namespace TCTC.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             statModifiers.regen = 30f;
+            statModifiers.health = 0.8f;
             statModifiers.gravity = 1.4f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -59,6 +60,13 @@ namespace TCTC.Cards
                     positive = false,
                     stat = "Gravity",
                     amount = "+40%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Health",
+                    amount = "-20%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

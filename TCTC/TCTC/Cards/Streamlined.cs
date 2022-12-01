@@ -13,7 +13,7 @@ namespace TCTC.Cards
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.5f;
+            statModifiers.health = 0.6f;
             statModifiers.movementSpeed = 1.6f;
 
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
@@ -58,7 +58,7 @@ namespace TCTC.Cards
                 {
                     positive = false,
                     stat = "Health",
-                    amount = "-50%",
+                    amount = "-40%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

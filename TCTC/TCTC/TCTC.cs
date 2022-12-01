@@ -24,7 +24,7 @@ namespace TCTC
         public static TCTCards instance { get; private set; }
         private const string ModId = "TheCampingTurret.Rounds.TCTC.cards";
         private const string ModName = "TCTCards";
-        public const string Version = "1.2.1"; // What version are we on (major.minor.patch)?
+        public const string Version = "1.2.2"; // What version are we on (major.minor.patch)?
         public const string ModInitials = "TCTC";
 
         private static readonly AssetBundle Bundle = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("tctc", typeof(TCTCards).Assembly);
@@ -48,20 +48,23 @@ namespace TCTC
         }
         void Start()
         {
-            CustomCard.BuildCard<DesignSpace>();
-            CustomCard.BuildCard<Streamlined>();
-            CustomCard.BuildCard<Waffle>();
-            CustomCard.BuildCard<Coffee>();
-            CustomCard.BuildCard<Compactteleporter>();
-            CustomCard.BuildCard<Assumption>();
-            CustomCard.BuildCard<TheEndIsNigh>();
-            CustomCard.BuildCard<Blindguess>();
-            CustomCard.BuildCard<Quadroacceleration>();
-            CustomCard.BuildCard<Educatedguess>();
-            CustomCard.BuildCard<Noguesswork>();
-            CustomCard.BuildCard<Class2estimation>();
-            CustomCard.BuildCard<RUD>();
-            CustomCard.BuildCard<Test>();
+            CustomCard.BuildCard<DesignSpace>();       //
+            CustomCard.BuildCard<Streamlined>();       //
+            CustomCard.BuildCard<Waffle>();            //art
+            CustomCard.BuildCard<Coffee>();            //art
+            CustomCard.BuildCard<Compactteleporter>(); //
+            CustomCard.BuildCard<Assumption>();        //
+            CustomCard.BuildCard<TheEndIsNigh>();      //
+            CustomCard.BuildCard<Blindguess>();        //art
+            CustomCard.BuildCard<Quadroacceleration>();//
+            CustomCard.BuildCard<Educatedguess>();     //art
+            CustomCard.BuildCard<Noguesswork>();       //art
+            CustomCard.BuildCard<Class2estimation>();  //art
+            CustomCard.BuildCard<RUD>();               //art
+
+
+
+            //CustomCard.BuildCard<Test>();
             
 
             instance = this;
