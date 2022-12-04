@@ -61,7 +61,7 @@ namespace TCTC
             CustomCard.BuildCard<Educatedguess>();     //art
             CustomCard.BuildCard<Noguesswork>();       //art
             CustomCard.BuildCard<Class2estimation>();  //art
-            CustomCard.BuildCard<RUD>();               //art
+            CustomCard.BuildCard<RUD>();               //
 
 
 
