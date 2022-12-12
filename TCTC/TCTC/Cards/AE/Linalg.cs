@@ -51,7 +51,7 @@ namespace TCTC.Cards.AE
         }
         protected override string GetDescription()
         {
-            return "Mutualy exclusive with Linear algebra";
+            return "Mutualy exclusive with Calculus 2";
         }
         protected override GameObject GetCardArt()
         {

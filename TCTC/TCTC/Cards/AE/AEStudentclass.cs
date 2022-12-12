@@ -42,7 +42,7 @@ namespace TCTC.Cards.AE
             CardInfo[][] math2 = new CardInfo[][] { new CardInfo[] { Calc2.card }, new CardInfo[] { Linalg.card } };
 
             //math 3 slot (10 ECTS)
-
+            
             //materials slot (10ECTS)
             CardInfo[][] matreq = generatereqtree(new List<CardInfo[][]> {math1, mechanics});
 
@@ -99,12 +99,16 @@ namespace TCTC.Cards.AE
 
         public override IEnumerator PostInit()
         {
+            //mechanics
             ClassesRegistry.Get(Dynamics.card).Blacklist(Statics.card);
             ClassesRegistry.Get(Statics.card).Blacklist(Dynamics.card);
+            //math1
             ClassesRegistry.Get(Calc1p1.card).Blacklist(Calc1p2.card);
             ClassesRegistry.Get(Calc1p2.card).Blacklist(Calc1p1.card);
+            //math2
             ClassesRegistry.Get(Calc2.card).Blacklist(Linalg.card);
             ClassesRegistry.Get(Linalg.card).Blacklist(Calc2.card);
+            //math3
 
             yield break;
         }

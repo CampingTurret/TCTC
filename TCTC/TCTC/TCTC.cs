@@ -31,6 +31,7 @@ namespace TCTC
 
         private static readonly AssetBundle Bundle = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("tctc", typeof(TCTCards).Assembly);
 
+        //card art
         public static GameObject WaffleArt = Bundle.LoadAsset<GameObject>("C_Waffle");
         public static GameObject CoffeeArt = Bundle.LoadAsset<GameObject>("C_Coffee");
         public static GameObject BlindGuessArt = Bundle.LoadAsset<GameObject>("C_BlindGuess");
@@ -39,6 +40,11 @@ namespace TCTC
         public static GameObject Class2Art = Bundle.LoadAsset<GameObject>("C_Class2");
         public static GameObject AssumptionArt = Bundle.LoadAsset<GameObject>("C_Assumption");
 
+        //AE art
+        public static GameObject StaticsArt = Bundle.LoadAsset<GameObject>("C_Statics");
+
+
+        //ui objects
         public static GameObject signal = Bundle.LoadAsset<GameObject>("TCTCsignal");
         public static GameObject signalcanvas = Bundle.LoadAsset<GameObject>("TCTCCanvas");
         

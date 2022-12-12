@@ -18,7 +18,8 @@ namespace TCTC.Cards.AE
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.bulletDamageMultiplier = 1.4f;
+            gun.bulletDamageMultiplier = 2f;
+            gun.attackSpeed = 1.5f;
             cardInfo.allowMultiple = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -69,7 +70,14 @@ namespace TCTC.Cards.AE
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "+40%",
+                    amount = "+100%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Attack speed",
+                    amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
