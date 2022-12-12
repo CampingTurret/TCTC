@@ -37,7 +37,7 @@ namespace TCTC.Cards
         }
         protected override string GetDescription()
         {
-            return "If you see this i made an error, let me know in the discord server (TheCampingTurret#4072)";
+            return "If you see this i made an error, let me know in the rounds modded discord server (TheCampingTurret#4072)";
         }
         protected override GameObject GetCardArt()
         {

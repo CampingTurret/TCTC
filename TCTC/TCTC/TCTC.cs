@@ -7,6 +7,7 @@ using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using Unity;
 using UnityEngine;
 using TCTC.MonoBehaviors;
+using TCTC.Cards.AE;
 
 namespace TCTC
 {
@@ -14,7 +15,8 @@ namespace TCTC
     [BepInDependency("com.willis.rounds.unbound", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.moddingutils", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch", BepInDependency.DependencyFlags.HardDependency)]
-    
+    [BepInDependency("root.classes.manager.reborn", BepInDependency.DependencyFlags.HardDependency)]
+
     // Declares our mod to Bepin
     [BepInPlugin(ModId, ModName, Version)]
     // The game our mod is associated with
@@ -62,11 +64,18 @@ namespace TCTC
             CustomCard.BuildCard<Noguesswork>();       //art
             CustomCard.BuildCard<Class2estimation>();  //art
             CustomCard.BuildCard<RUD>();               //
+            CustomCard.BuildCard<AEStudentclass>();    //
+            CustomCard.BuildCard<Statics>();           //
+            CustomCard.BuildCard<Dynamics>();          //
+            CustomCard.BuildCard<Calc1p1>();           //
+            CustomCard.BuildCard<Calc1p2>();           //
+            CustomCard.BuildCard<Linalg>();            //
+            CustomCard.BuildCard<Calc2>();             //
 
 
 
             //CustomCard.BuildCard<Test>();
-            
+
 
             instance = this;
         }

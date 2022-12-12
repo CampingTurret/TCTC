@@ -6,74 +6,71 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using TCTC.MonoBehaviors;
+using ClassesManagerReborn.Util;
 
-namespace TCTC.Cards
+namespace TCTC.Cards.AE
 {
-    class Waffle : CustomCard
+    class AEStudentclass : CustomCard
     {
+
+        public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.regen = 25f;
-            statModifiers.health = 0.8f;
-            statModifiers.gravity = 1.4f;
+            statModifiers.movementSpeed = 1.2f;
+            cardInfo.allowMultiple = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            if (player.GetComponent<ECTSmono>() == null)
+            {
+                player.gameObject.AddComponent<ECTSmono>();
+            }
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            Destroy(player.GetComponent<ECTSmono>());
             //Run when the card is removed from the player
+        }
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>();
         }
 
         protected override string GetTitle()
         {
-            return "Waffle";
+            return "Aerospace Engineering Student Class";
         }
         protected override string GetDescription()
         {
-            return "Nom Nom Nom";
+            return "Achieve 180 ECTS for your bachelor";
         }
         protected override GameObject GetCardArt()
         {
-            return TCTCards.WaffleArt;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Uncommon;
         }
         protected override CardInfoStat[] GetStats()
         {
             return new CardInfoStat[]
             {
-               
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Regeneration",
-                    amount = "+30",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Gravity",
-                    amount = "+40%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Health",
-                    amount = "-20%",
+                    stat = "Movement speed",
+                    amount = "+20%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.ColdBlue;
+            return CardThemeColor.CardThemeColorType.TechWhite;
         }
         public override string GetModName()
         {

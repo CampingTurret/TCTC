@@ -1,6 +1,34 @@
 # TCTC
 
+## V 2.0.0
 
+Balance changes
+
+- Rapid unplanned disasembly
+	- Explosion now scales with max health
+
+- Guess cards 
+	- decreased the delta in the effect of the buffs and debuffs
+
+- Waffle
+	- decreased regen (30 to 25)
+
+Added dependencies
+
+- Rarity lib
+
+- Classes manager reborn
+
+
+new cards
+
+- AE student class (new class)
+	- Statics
+	- Dynamics
+	- Calculus 1 part 1
+	- Calculus 1 part 2
+	- Calculus 2 
+	- Linear Algebra
 
 
 ## V 1.2.2
