@@ -30,7 +30,6 @@ namespace TCTC.MonoBehaviors
             active = true;
 
             //from cards plus (adware)
-            
             var temp = PlayerManager.instance.players.Where(p => p.playerID == player.playerID).FirstOrDefault();
             if (!temp || !temp.data.view.IsMine)
             {

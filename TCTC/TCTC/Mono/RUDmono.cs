@@ -67,15 +67,16 @@ namespace TCTC.MonoBehaviors
                     x.attackLevel = 0;
                     x.attackID = 0;
                     Explosion q = detonator.AddComponent<Explosion>();
-                    q.damage = data.maxHealth * 2;
-                    q.objectForceMultiplier = 4;
-                    q.range = 10f;
+                    q.damage = data.maxHealth * 2 + 100;
+                    q.objectForceMultiplier = 4 * data.maxHealth/100;
+                    q.range = 10f * data.maxHealth/100;
 
 
                     GameObject explosion = explosionCard.GetComponent<Gun>().objectsToSpawn[0].effect;
                     Instantiate(explosion, player.transform.position , player.transform.rotation);
                     Instantiate(detonator, player.transform.position , player.transform.rotation);
                     q.Explode();
+                    
 
 
 
