@@ -29,7 +29,11 @@ new cards
 	- Calculus 1 part 2
 	- Calculus 2 
 	- Linear Algebra
+	- Differential equations
+	- Propability and Statistics
 
+new art
+- Statics now has art
 
 ## V 1.2.2
 

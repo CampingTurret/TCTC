@@ -66,18 +66,25 @@ namespace TCTC
             CustomCard.BuildCard<TheEndIsNigh>();      //
             CustomCard.BuildCard<Blindguess>();        //art
             CustomCard.BuildCard<Quadroacceleration>();//
-            CustomCard.BuildCard<Educatedguess>();     //art
+            CustomCard.BuildCard<Educatedguess>((card) => Educatedguess.card = card);     //art
             CustomCard.BuildCard<Noguesswork>();       //art
             CustomCard.BuildCard<Class2estimation>();  //art
             CustomCard.BuildCard<RUD>();               //
-            CustomCard.BuildCard<AEStudentclass>();    //
-            CustomCard.BuildCard<Statics>();           //
-            CustomCard.BuildCard<Dynamics>();          //
-            CustomCard.BuildCard<Calc1p1>();           //
-            CustomCard.BuildCard<Calc1p2>();           //
-            CustomCard.BuildCard<Linalg>();            //
-            CustomCard.BuildCard<Calc2>();             //
-
+            CustomCard.BuildCard<AEStudentclass>((card) => AEStudentclass.card = card);    //
+            CustomCard.BuildCard<Statics>((card) => Statics.card = card);                  //art
+            CustomCard.BuildCard<Dynamics>((card) => Dynamics.card = card);                //
+            CustomCard.BuildCard<Calc1p1>((card) => Calc1p1.card = card);                  //
+            CustomCard.BuildCard<Calc1p2>((card) => Calc1p2.card = card);                  //
+            CustomCard.BuildCard<Linalg>((card) => Linalg.card = card);                    //
+            CustomCard.BuildCard<Calc2>((card) => Calc2.card = card);                      //
+            CustomCard.BuildCard<DE>((card) => DE.card = card);                            //
+            CustomCard.BuildCard<Propstat>((card) => Propstat.card = card);                //
+            CustomCard.BuildCard<Materials>((card) => Materials.card = card);              //
+            CustomCard.BuildCard<MOM>((card) => MOM.card = card);                          //
+            CustomCard.BuildCard<Intro1>((card) => Intro1.card = card);                    //
+            CustomCard.BuildCard<Intro2>((card) => Intro2.card = card);                    //
+            CustomCard.BuildCard<Thermo>((card) => Thermo.card = card);                    //
+            CustomCard.BuildCard<Electro>((card) => Electro.card = card);                  //
 
 
             //CustomCard.BuildCard<Test>();

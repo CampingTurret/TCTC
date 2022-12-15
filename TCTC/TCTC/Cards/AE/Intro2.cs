@@ -7,48 +7,60 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using TCTC.MonoBehaviors;
+using ClassesManagerReborn.Util;
 
-namespace TCTC.Cards
+namespace TCTC.Cards.AE
 {
-    class Educatedguess : CustomCard
+    class Intro2: CustomCard
     {
+
+
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            
-            
+            statModifiers.gravity = 0.1f;
+            gun.gravity = 0.1f;
+            cardInfo.allowMultiple = false;
+            //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.gameObject.AddComponent<Educatedguessmono>();
-            if (player.GetComponent<UIhandelermono>() == null)
+            if (player.GetComponent<ECTSmono>() != null)
             {
-                player.gameObject.AddComponent<UIhandelermono>();
+                ECTSmono ECTS = player.GetComponent<ECTSmono>();
+                ECTS.IncreaseECTS(10); 
             }
-
+            //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            Destroy(player.gameObject.GetComponent<Educatedguessmono>());
-            
+            if (player.GetComponent<ECTSmono>() != null)
+            {
+                ECTSmono ECTS = player.GetComponent<ECTSmono>();
+                ECTS.IncreaseECTS(-10);
+            }
             //Run when the card is removed from the player
+        }
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = AEclass.name;
         }
 
         protected override string GetTitle()
         {
-            return "Educated guess";
+            return "Introduction to aerospace engineering 2";
         }
         protected override string GetDescription()
         {
-            return "Every 5 seconds flip an unfair coin, heads means a stat boost, while tails means a debuff";
+            return "Mutualy exclusive with Introduction to aerospace engineering 1";
         }
         protected override GameObject GetCardArt()
         {
-            return TCTCards.EducatedGuessArt;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -57,15 +69,22 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "on heads:",
-                    amount = "Buff",
+                    stat = "Gravity",
+                    amount = "-90%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "on tails:",
-                    amount = "Debuff",
+                    positive = true,
+                    stat = "Bullet Gravity",
+                    amount = "-90%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "ECTS",
+                    amount = "+10",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

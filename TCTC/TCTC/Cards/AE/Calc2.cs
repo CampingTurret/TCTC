@@ -19,7 +19,7 @@ namespace TCTC.Cards.AE
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.bulletDamageMultiplier = 2f;
-            gun.attackSpeed = 1.5f;
+            gun.attackSpeed = 2f;
             cardInfo.allowMultiple = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -75,7 +75,7 @@ namespace TCTC.Cards.AE
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
+                    positive = false,
                     stat = "Attack speed",
                     amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned

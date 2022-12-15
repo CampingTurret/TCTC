@@ -28,37 +28,57 @@ namespace TCTC.Cards.AE
             //base class
             ClassesRegistry.Register(AEStudentclass.card, CardType.Entry);
 
-            //mechanics slot (10 ECTS)
+            //mechanics slot (10 ECTS) 
             ClassesRegistry.Register(Statics.card, CardType.Branch, AEStudentclass.card,1);
             ClassesRegistry.Register(Dynamics.card, CardType.Branch, AEStudentclass.card,1);
             CardInfo[][] mechanics = new CardInfo[][] { new CardInfo[] { Statics.card }, new CardInfo[] { Dynamics.card } };
-            //math1 slot (10ECTS)
+            //math1 slot (10ECTS) 
             ClassesRegistry.Register(Calc1p1.card, CardType.Branch, AEStudentclass.card, 1);
             ClassesRegistry.Register(Calc1p2.card, CardType.Branch, AEStudentclass.card, 1);
             CardInfo[][] math1 = new CardInfo[][] { new CardInfo[] { Calc1p1.card }, new CardInfo[] { Calc1p2.card } };
-            //math2 slot (10ECTS)
+            //math2 slot (10ECTS) 
             ClassesRegistry.Register(Calc2.card, CardType.Branch, math1,1);
             ClassesRegistry.Register(Linalg.card, CardType.Branch, math1,1);
             CardInfo[][] math2 = new CardInfo[][] { new CardInfo[] { Calc2.card }, new CardInfo[] { Linalg.card } };
 
-            //math 3 slot (10 ECTS)
-            
-            //materials slot (10ECTS)
-            CardInfo[][] matreq = generatereqtree(new List<CardInfo[][]> {math1, mechanics});
+            //math 3 slot (10 ECTS) 
+            ClassesRegistry.Register(DE.card, CardType.Branch, math2, 1);
+            ClassesRegistry.Register(Propstat.card, CardType.Branch, math2, 1);
+            CardInfo[][] math3 = new CardInfo[][] { new CardInfo[] { Calc2.card }, new CardInfo[] { Linalg.card } };
 
-            //ADSEE slot (15ECTS)
+            //materials slot (10ECTS) 
+            CardInfo[][] matreq = generatereqtree(new List<CardInfo[][]> {math1, mechanics});
+            ClassesRegistry.Register(Materials.card, CardType.Branch, matreq, 1);
+            ClassesRegistry.Register(MOM.card, CardType.Branch, matreq, 1);
+            CardInfo[][] mat = new CardInfo[][] { new CardInfo[] { MOM.card }, new CardInfo[] { Materials.card } };
+
+            //Intro slot (10ECTS)
+            ClassesRegistry.Register(Intro1.card, CardType.Branch, AEStudentclass.card, 1);
+            ClassesRegistry.Register(Intro2.card, CardType.Branch, AEStudentclass.card, 1);
+            CardInfo[][] intro = new CardInfo[][] { new CardInfo[] { Intro1.card }, new CardInfo[] { Intro2.card } };
 
             //physics 1 slot (10ECTS)
+            ClassesRegistry.Register(Thermo.card, CardType.Branch, math1, 1);
+            ClassesRegistry.Register(Electro.card, CardType.Branch, math1, 1);
+            CardInfo[][] phys1 = new CardInfo[][] { new CardInfo[] { Thermo.card }, new CardInfo[] { Electro.card } };
 
-            //aerodynamics slot (15 ECTS)
+            //ADSEE (15ECTS)
 
-            //project 1 slot (10 ECTS)
+            //aerodynamics slot (10 ECTS)
 
-            //project 2 slot (10 ECTS)
+            //Flight & Orbital Mechanics and Propulsion (10ECTS)
+
+            //project 1 slot (15 ECTS)
+
+            //project 2 slot (15 ECTS)
 
             //minor (15 ECTS)
 
-            //DSE (30 ECTS)
+            //flight dynamics (15ECTS)
+
+            //DSE (15 ECTS)
+
+
 
             //standalone cards
             //resit? (ECTS outside of slots??)
@@ -109,6 +129,18 @@ namespace TCTC.Cards.AE
             ClassesRegistry.Get(Calc2.card).Blacklist(Linalg.card);
             ClassesRegistry.Get(Linalg.card).Blacklist(Calc2.card);
             //math3
+            ClassesRegistry.Get(DE.card).Blacklist(Propstat.card);
+            ClassesRegistry.Get(Propstat.card).Blacklist(DE.card);
+            //materials
+            ClassesRegistry.Get(MOM.card).Blacklist(Materials.card);
+            ClassesRegistry.Get(Materials.card).Blacklist(MOM.card);
+            //intro
+            ClassesRegistry.Get(Intro1.card).Blacklist(Intro2.card);
+            ClassesRegistry.Get(Intro2.card).Blacklist(Intro1.card);
+            //physics
+            ClassesRegistry.Get(Thermo.card).Blacklist(Electro.card);
+            ClassesRegistry.Get(Electro.card).Blacklist(Thermo.card);
+            //ADSEE
 
             yield break;
         }
