@@ -12,6 +12,7 @@ namespace TCTC.Cards
 {
     class Class2estimation : CustomCard
     {
+        public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             statModifiers.health = 1.8f;

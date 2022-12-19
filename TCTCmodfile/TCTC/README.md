@@ -16,7 +16,6 @@ Balance changes
 Added dependencies
 
 - Rarity lib
-
 - Classes manager reborn
 
 
@@ -31,9 +30,19 @@ new cards
 	- Linear Algebra
 	- Differential equations
 	- Propability and Statistics
+	- Introduction to aerospace engineering 1
+	- Introduction to aerospace engineering 2
+	- Materials
+	- Mechanics of materials
+	- Thermodynamics
+	- Electromagnetism
+	- ADSEE1
+	- ADSEE2
 
 new art
 - Statics now has art
+- Dynamics now has art
+- Differential equations now has art
 
 ## V 1.2.2
 

@@ -11,14 +11,16 @@ using ClassesManagerReborn.Util;
 
 namespace TCTC.Cards.AE
 {
-    class Dynamics : CustomCard
+    class Aero2 : CustomCard
     {
+
 
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.7f;
-            statModifiers.movementSpeed = 1.6f;
+            statModifiers.movementSpeed = 2f;
+            gun.projectileSpeed = 2f;
+            gun.drag = 1.5f;
             cardInfo.allowMultiple = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -27,7 +29,7 @@ namespace TCTC.Cards.AE
             if (player.GetComponent<ECTSmono>() != null)
             {
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(10);
+                ECTS.IncreaseECTS(10); 
             }
             //Edits values on player when card is selected
         }
@@ -44,17 +46,18 @@ namespace TCTC.Cards.AE
         {
             gameObject.GetOrAddComponent<ClassNameMono>().className = AEclass.name;
         }
+
         protected override string GetTitle()
         {
-            return "Dynamics";
+            return "Aerodynamics 2";
         }
         protected override string GetDescription()
         {
-            return "Mutualy exclusive with statics";
+            return "Mutualy exclusive with Aerodynamics 1";
         }
         protected override GameObject GetCardArt()
         {
-            return TCTCards.DyanmicsArt;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -64,18 +67,26 @@ namespace TCTC.Cards.AE
         {
             return new CardInfoStat[]
             {
-                 new CardInfoStat()
+                
+                new CardInfoStat()
                 {
                     positive = false,
-                    stat = "health",
-                    amount = "-30%",
+                    stat = "Movement speed",
+                    amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Movement speed",
-                    amount = "+60%",
+                    stat = "Bullet speed",
+                    amount = "+100%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Bullet drag",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

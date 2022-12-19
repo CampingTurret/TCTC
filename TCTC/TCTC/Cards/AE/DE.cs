@@ -55,7 +55,7 @@ namespace TCTC.Cards.AE
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return TCTCards.DEArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

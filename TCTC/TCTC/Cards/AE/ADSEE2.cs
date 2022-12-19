@@ -11,14 +11,14 @@ using ClassesManagerReborn.Util;
 
 namespace TCTC.Cards.AE
 {
-    class Dynamics : CustomCard
+    class ADSEE2 : CustomCard
     {
+
 
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.7f;
-            statModifiers.movementSpeed = 1.6f;
+            statModifiers.gravity = 0.5f;
             cardInfo.allowMultiple = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -27,8 +27,9 @@ namespace TCTC.Cards.AE
             if (player.GetComponent<ECTSmono>() != null)
             {
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(10);
+                ECTS.IncreaseECTS(15); 
             }
+            ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, Class2estimation.card, addToCardBar: true);
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -36,25 +37,27 @@ namespace TCTC.Cards.AE
             if (player.GetComponent<ECTSmono>() != null)
             {
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(-10);
+                ECTS.IncreaseECTS(-15);
             }
+            ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(player, Class2estimation.card, editCardBar: true);
             //Run when the card is removed from the player
         }
         public override void Callback()
         {
             gameObject.GetOrAddComponent<ClassNameMono>().className = AEclass.name;
         }
+
         protected override string GetTitle()
         {
-            return "Dynamics";
+            return "ADSEE2";
         }
         protected override string GetDescription()
         {
-            return "Mutualy exclusive with statics";
+            return "Mutualy exclusive with ADSEE1";
         }
         protected override GameObject GetCardArt()
         {
-            return TCTCards.DyanmicsArt;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -64,25 +67,25 @@ namespace TCTC.Cards.AE
         {
             return new CardInfoStat[]
             {
-                 new CardInfoStat()
+                new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "health",
-                    amount = "-30%",
+                    positive = true,
+                    stat = "Class II weight estimation",
+                    amount = "+1%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Movement speed",
-                    amount = "+60%",
+                    stat = "Gravity",
+                    amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "ECTS",
-                    amount = "+10",
+                    amount = "+15",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

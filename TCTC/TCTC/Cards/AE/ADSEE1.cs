@@ -11,14 +11,15 @@ using ClassesManagerReborn.Util;
 
 namespace TCTC.Cards.AE
 {
-    class Dynamics : CustomCard
+    class ADSEE1 : CustomCard
     {
+
 
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.7f;
-            statModifiers.movementSpeed = 1.6f;
+            statModifiers.health = 1.3f;
+            statModifiers.movementSpeed = 1.2f;
             cardInfo.allowMultiple = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -27,7 +28,7 @@ namespace TCTC.Cards.AE
             if (player.GetComponent<ECTSmono>() != null)
             {
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(10);
+                ECTS.IncreaseECTS(15); 
             }
             //Edits values on player when card is selected
         }
@@ -36,7 +37,7 @@ namespace TCTC.Cards.AE
             if (player.GetComponent<ECTSmono>() != null)
             {
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(-10);
+                ECTS.IncreaseECTS(-15);
             }
             //Run when the card is removed from the player
         }
@@ -44,45 +45,46 @@ namespace TCTC.Cards.AE
         {
             gameObject.GetOrAddComponent<ClassNameMono>().className = AEclass.name;
         }
+
         protected override string GetTitle()
         {
-            return "Dynamics";
+            return "ADSEE1";
         }
         protected override string GetDescription()
         {
-            return "Mutualy exclusive with statics";
+            return "Mutualy exclusive with ADSEE2";
         }
         protected override GameObject GetCardArt()
         {
-            return TCTCards.DyanmicsArt;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {
             return new CardInfoStat[]
             {
-                 new CardInfoStat()
+                new CardInfoStat()
                 {
-                    positive = false,
+                    positive = true,
                     stat = "health",
-                    amount = "-30%",
+                    amount = "+30%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
+                    positive = false,
                     stat = "Movement speed",
-                    amount = "+60%",
+                    amount = "+20%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "ECTS",
-                    amount = "+10",
+                    amount = "+15",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

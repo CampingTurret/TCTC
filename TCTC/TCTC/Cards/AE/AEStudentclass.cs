@@ -63,8 +63,15 @@ namespace TCTC.Cards.AE
             CardInfo[][] phys1 = new CardInfo[][] { new CardInfo[] { Thermo.card }, new CardInfo[] { Electro.card } };
 
             //ADSEE (15ECTS)
-
+            CardInfo[][] Adseereq = generatereqtree(new List<CardInfo[][]> { math1, mechanics });
+            ClassesRegistry.Register(ADSEE1.card, CardType.Branch, Adseereq, 1);
+            ClassesRegistry.Register(ADSEE2.card, CardType.Branch, Adseereq, 1);
+            CardInfo[][] ADSEE = new CardInfo[][] { new CardInfo[] { ADSEE1.card }, new CardInfo[] { ADSEE2.card } };
             //aerodynamics slot (10 ECTS)
+            CardInfo[][] Aeroreq = generatereqtree(new List<CardInfo[][]> { phys1, mechanics, math2});
+            ClassesRegistry.Register(Aero1.card, CardType.Branch, Aeroreq, 1);
+            ClassesRegistry.Register(Aero2.card, CardType.Branch, Aeroreq, 1);
+            CardInfo[][] Aero = new CardInfo[][] { new CardInfo[] { Aero1.card }, new CardInfo[] { Aero2.card } };
 
             //Flight & Orbital Mechanics and Propulsion (10ECTS)
 
