@@ -8,6 +8,10 @@ using Unity;
 using UnityEngine;
 using TCTC.MonoBehaviors;
 using TCTC.Cards.AE;
+using UnboundLib.GameModes;
+using ModdingUtils.GameModes;
+using Photon.Pun;
+using System.Collections;
 
 namespace TCTC
 {
@@ -56,6 +60,19 @@ namespace TCTC
             // Use this to call any harmony patch files your mod may have
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
+            
+            GameModeManager.AddHook(GameModeHooks.HookBattleStart, battlestart);
+        }
+        IEnumerator battlestart(IGameModeHandler gm)
+        {
+            foreach (var Stress in FindObjectsOfType<Stressmono>())
+            {
+                Stress.Starttimer();            }
+            foreach (var Stress in FindObjectsOfType<Stress2mono>())
+            {
+                Stress.Starttimer();
+            }
+            yield break;
         }
         void Start()
         {
@@ -94,6 +111,8 @@ namespace TCTC
             CustomCard.BuildCard<ADSEE2>((card) => ADSEE2.card = card);                    //
             CustomCard.BuildCard<Aero1>((card) => Aero1.card = card);                      //
             CustomCard.BuildCard<Aero2>((card) => Aero2.card = card);                      //
+            CustomCard.BuildCard<EAE>((card) => EAE.card = card);                      //
+            CustomCard.BuildCard<DAC>((card) => DAC.card = card);                      //
 
 
 

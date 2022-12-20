@@ -76,7 +76,9 @@ namespace TCTC.Cards.AE
             //Flight & Orbital Mechanics and Propulsion (10ECTS)
 
             //project 1 slot (15 ECTS)
-
+            ClassesRegistry.Register(DAC.card, CardType.Branch, AEStudentclass.card, 1);
+            ClassesRegistry.Register(EAE.card, CardType.Branch, AEStudentclass.card, 1);
+            CardInfo[][] project1 = new CardInfo[][] { new CardInfo[] { DAC.card }, new CardInfo[] { EAE.card } };
             //project 2 slot (15 ECTS)
 
             //minor (15 ECTS)
@@ -88,7 +90,7 @@ namespace TCTC.Cards.AE
 
 
             //standalone cards
-            //resit? (ECTS outside of slots??)
+            //resit? (ECTS outside of slots??/gain 2 random subjects)
             //Extra credit? (ECTS outside of slots??)
             //TA buffs per ECTS
             //Student teams buffs per ECTS
@@ -148,7 +150,23 @@ namespace TCTC.Cards.AE
             ClassesRegistry.Get(Thermo.card).Blacklist(Electro.card);
             ClassesRegistry.Get(Electro.card).Blacklist(Thermo.card);
             //ADSEE
+            ClassesRegistry.Get(ADSEE1.card).Blacklist(ADSEE2.card);
+            ClassesRegistry.Get(ADSEE2.card).Blacklist(ADSEE1.card);
+            //aerodynamics
+            ClassesRegistry.Get(Aero1.card).Blacklist(Aero2.card);
+            ClassesRegistry.Get(Aero2.card).Blacklist(Aero1.card);
+            //Flight & Orbital Mechanics and Propulsion
 
+            //project1
+            ClassesRegistry.Get(DAC.card).Blacklist(EAE.card);
+            ClassesRegistry.Get(EAE.card).Blacklist(DAC.card);
+            //project 2 slot (15 ECTS)
+
+            //minor (15 ECTS)
+
+            //flight dynamics (15ECTS)
+
+            //DSE (15 ECTS)
             yield break;
         }
     }

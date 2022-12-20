@@ -11,14 +11,13 @@ using ClassesManagerReborn.Util;
 
 namespace TCTC.Cards.AE
 {
-    class ADSEE2 : CustomCard
+    class DAC : CustomCard
     {
-
 
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.gravity = 0.5f;
+            statModifiers.health = 3f;
             cardInfo.allowMultiple = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
@@ -29,7 +28,9 @@ namespace TCTC.Cards.AE
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
                 ECTS.IncreaseECTS(15); 
             }
-            ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, Class2estimation.card, addToCardBar: true);
+            Stressmono x = player.gameObject.AddComponent<Stressmono>();
+            x.damage = 10;
+            x.timetildot = 15;
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -39,7 +40,7 @@ namespace TCTC.Cards.AE
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
                 ECTS.IncreaseECTS(-15);
             }
-            ModdingUtils.Utils.Cards.instance.RemoveCardFromPlayer(player, Class2estimation.card, editCardBar: true);
+            Destroy(player.gameObject.GetComponent<Stressmono>());
             //Run when the card is removed from the player
         }
         public override void Callback()
@@ -49,11 +50,11 @@ namespace TCTC.Cards.AE
 
         protected override string GetTitle()
         {
-            return "ADSEE2";
+            return "Aerospace Design and Construction";
         }
         protected override string GetDescription()
         {
-            return "Mutualy exclusive with ADSEE1";
+            return "Mutualy exclusive with Exploring Aerospace Engineering";
         }
         protected override GameObject GetCardArt()
         {
@@ -70,15 +71,22 @@ namespace TCTC.Cards.AE
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Class II weight estimation",
-                    amount = "+1",
+                    stat = "Health",
+                    amount = "+200%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Gravity",
-                    amount = "-50%",
+                    stat = "Stress damage",
+                    amount = "10",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "time until stress",
+                    amount = "15s",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

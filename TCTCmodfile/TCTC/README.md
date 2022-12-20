@@ -13,6 +13,10 @@ Balance changes
 - Waffle
 	- decreased regen (30 to 25)
 
+- DesignSpace
+	- Increased health (400% to 600%)
+	- Increased Damage (-95% to -90%)
+
 Added dependencies
 
 - Rarity lib
@@ -38,6 +42,12 @@ new cards
 	- Electromagnetism
 	- ADSEE1
 	- ADSEE2
+	- Aerodynamics 1
+	- Aerodynamics 2
+	- Aerospace Design and Construction
+	- Exploring Aerospace Engineering
+	- Systems Design
+
 
 new art
 - Statics now has art

@@ -16,9 +16,9 @@ namespace TCTC.Cards
         {
             UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been setup.");
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
-            statModifiers.health = 5f;
+            statModifiers.health = 7f;
             statModifiers.sizeMultiplier = 2f;
-            gun.bulletDamageMultiplier = 0.05f;
+            gun.bulletDamageMultiplier = 0.10f;
             
 
 
@@ -59,7 +59,7 @@ namespace TCTC.Cards
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+400%",
+                    amount = "+600%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
@@ -73,7 +73,7 @@ namespace TCTC.Cards
                 {
                     positive = false,
                     stat = "Damage",
-                    amount = "-95%",
+                    amount = "-90%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
