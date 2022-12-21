@@ -80,14 +80,16 @@ namespace TCTC.Cards.AE
             ClassesRegistry.Register(EAE.card, CardType.Branch, AEStudentclass.card, 1);
             CardInfo[][] project1 = new CardInfo[][] { new CardInfo[] { DAC.card }, new CardInfo[] { EAE.card } };
             //project 2 slot (15 ECTS)
+            CardInfo[][] prj2req = generatereqtree(new List<CardInfo[][]> { phys1, mechanics, math2, project1, intro});
+            ClassesRegistry.Register(Systemdes.card, CardType.Branch, prj2req, 1);
+            ClassesRegistry.Register(Testandsym.card, CardType.Branch, prj2req, 1);
+            CardInfo[][] project2 = new CardInfo[][] { new CardInfo[] { Systemdes.card }, new CardInfo[] { Testandsym.card } };
 
             //minor (15 ECTS)
 
             //flight dynamics (15ECTS)
 
             //DSE (15 ECTS)
-
-
 
             //standalone cards
             //resit? (ECTS outside of slots??/gain 2 random subjects)

@@ -38,6 +38,7 @@ namespace TCTC.MonoBehaviors
 
         public void Starttimer()
         {
+            data.health = data.maxHealth;
             spawned = false;
             timer = 0;
         }

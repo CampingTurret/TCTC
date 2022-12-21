@@ -11,6 +11,7 @@ using ModdingUtils.RoundsEffects;
 using static System.Net.Mime.MediaTypeNames;
 using Photon.Pun.UtilityScripts;
 using Photon;
+using System.Threading;
 
 namespace TCTC.MonoBehaviors
 {
@@ -54,14 +55,13 @@ namespace TCTC.MonoBehaviors
                 {
 
 
-
+                    //reseting parameters
                     timer = 0.5f;
                     TUD = false;
 
-                    //damage.Set(data.maxHealth * 99f, 0);
-                    //this.health.DoDamage(damage, player.transform.position, damagecolor);
+                    //Exposion damage setup:
                     GameObject detonator = new GameObject("boom");
-
+                    
                     SpawnedAttack x = detonator.AddComponent<SpawnedAttack>();
                     x.spawner = player;
                     x.attackLevel = 0;
@@ -70,9 +70,12 @@ namespace TCTC.MonoBehaviors
                     q.damage = data.maxHealth * 2 + 100;
                     q.objectForceMultiplier = 4 * data.maxHealth/100;
                     q.range = 10f * data.maxHealth/100;
+                    detonator.AddComponent<RUDcleanup>();
 
-
+                    //Explosion effect setup:
                     GameObject explosion = explosionCard.GetComponent<Gun>().objectsToSpawn[0].effect;
+
+                    //Boom
                     Instantiate(explosion, player.transform.position , player.transform.rotation);
                     Instantiate(detonator, player.transform.position , player.transform.rotation);
                     q.Explode();
@@ -105,4 +108,24 @@ namespace TCTC.MonoBehaviors
         private readonly GameObject explosionCard = (GameObject)Resources.Load("0 cards/Explosive bullet");
 
     }
+
+    public class RUDcleanup : MonoBehaviour 
+    {
+
+
+        public void Update()
+        {
+            if(timer < 0)
+            {
+                Destroy(this.gameObject);
+            }
+            timer = timer - Time.deltaTime;
+        }
+
+        float timer = 20f;
+    
+    }
+
+    
+
 }

@@ -47,9 +47,11 @@ new cards
 	- Aerospace Design and Construction
 	- Exploring Aerospace Engineering
 	- Systems Design
+	- Test, Analysis and Simulation
 
 
 new art
+
 - Statics now has art
 - Dynamics now has art
 - Differential equations now has art

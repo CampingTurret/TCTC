@@ -11,7 +11,7 @@ using ClassesManagerReborn.Util;
 
 namespace TCTC.Cards.AE
 {
-    class Systemdes: CustomCard
+    class Testandsym: CustomCard
     {
 
         public static CardInfo card = null;
@@ -30,7 +30,7 @@ namespace TCTC.Cards.AE
                 ECTS.IncreaseECTS(15); 
             }
             Stress2mono x = player.gameObject.AddComponent<Stress2mono>();
-            x.damage = 20;
+            x.damage = 10;
             x.timetildot = 30;
             //Edits values on player when card is selected
         }
@@ -51,11 +51,11 @@ namespace TCTC.Cards.AE
 
         protected override string GetTitle()
         {
-            return "Systems Design";
+            return "Test, Analysis and Simulation";
         }
         protected override string GetDescription()
         {
-            return "Mutualy exclusive with Test, Analysis and Simulation";
+            return "Mutualy exclusive with Systems Design";
         }
         protected override GameObject GetCardArt()
         {
@@ -63,7 +63,7 @@ namespace TCTC.Cards.AE
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Uncommon;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -87,7 +87,7 @@ namespace TCTC.Cards.AE
                 {
                     positive = false,
                     stat = "Stress damage",
-                    amount = "20",
+                    amount = "10",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

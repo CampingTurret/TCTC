@@ -32,12 +32,15 @@ namespace TCTC.MonoBehaviors
                 {
                     Startdamage();
                 }
+
+                timer = timer + Time.deltaTime;
             }
 
         }
 
         public void Starttimer()
         {
+            data.health = data.maxHealth;
             spawned = false;
             timer = 0;
         }
