@@ -43,11 +43,14 @@ namespace TCTC
         public static GameObject NoGuessWorkArt = Bundle.LoadAsset<GameObject>("C_NoGuessWork");
         public static GameObject Class2Art = Bundle.LoadAsset<GameObject>("C_Class2");
         public static GameObject AssumptionArt = Bundle.LoadAsset<GameObject>("C_Assumption");
+        public static GameObject StreamlinedArt = Bundle.LoadAsset<GameObject>("C_Streamlined");
 
         //AE art
         public static GameObject StaticsArt = Bundle.LoadAsset<GameObject>("C_Statics");
         public static GameObject DyanmicsArt = Bundle.LoadAsset<GameObject>("C_Dynamics");
         public static GameObject DEArt = Bundle.LoadAsset<GameObject>("C_DE");
+        public static GameObject DACArt = Bundle.LoadAsset<GameObject>("C_DAC");
+        public static GameObject Aero1Art = Bundle.LoadAsset<GameObject>("C_Aero1");
 
 
         //ui objects
@@ -77,7 +80,7 @@ namespace TCTC
         void Start()
         {
             CustomCard.BuildCard<DesignSpace>();       //
-            CustomCard.BuildCard<Streamlined>();       //
+            CustomCard.BuildCard<Streamlined>();       //art
             CustomCard.BuildCard<Waffle>();            //art
             CustomCard.BuildCard<Coffee>();            //art
             CustomCard.BuildCard<Compactteleporter>(); //
@@ -109,10 +112,12 @@ namespace TCTC
             CustomCard.BuildCard<Electro>((card) => Electro.card = card);                  //
             CustomCard.BuildCard<ADSEE1>((card) => ADSEE1.card = card);                    //
             CustomCard.BuildCard<ADSEE2>((card) => ADSEE2.card = card);                    //
-            CustomCard.BuildCard<Aero1>((card) => Aero1.card = card);                      //
+            CustomCard.BuildCard<Aero1>((card) => Aero1.card = card);                      //art
             CustomCard.BuildCard<Aero2>((card) => Aero2.card = card);                      //
-            CustomCard.BuildCard<EAE>((card) => EAE.card = card);                      //
-            CustomCard.BuildCard<DAC>((card) => DAC.card = card);                      //
+            CustomCard.BuildCard<EAE>((card) => EAE.card = card);                          //
+            CustomCard.BuildCard<DAC>((card) => DAC.card = card);                          //art
+            CustomCard.BuildCard<Systemdes>((card) => Systemdes.card = card);              //
+            CustomCard.BuildCard<Testandsym>((card) => Testandsym.card = card);            //
 
 
 

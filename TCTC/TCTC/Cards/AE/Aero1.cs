@@ -55,7 +55,7 @@ namespace TCTC.Cards.AE
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return TCTCards.Aero1Art;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -68,7 +68,7 @@ namespace TCTC.Cards.AE
                 
                 new CardInfoStat()
                 {
-                    positive = false,
+                    positive = true,
                     stat = "Movement speed",
                     amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned

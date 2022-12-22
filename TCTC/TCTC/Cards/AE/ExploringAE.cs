@@ -77,7 +77,7 @@ namespace TCTC.Cards.AE
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
+                    positive = false,
                     stat = "Stress damage",
                     amount = "5",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned

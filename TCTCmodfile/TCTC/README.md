@@ -2,6 +2,12 @@
 
 ## V 2.0.0
 
+fixes
+
+- Rapid unplanned disasembly
+	- added automatic deletion for the left over gameobjects after an explosion
+
+
 Balance changes
 
 - Rapid unplanned disasembly
@@ -55,6 +61,9 @@ new art
 - Statics now has art
 - Dynamics now has art
 - Differential equations now has art
+- Aerospace Design and Construction now has art
+- Aerodynamics 1 now has art
+- Streamlined now has art
 
 ## V 1.2.2
 

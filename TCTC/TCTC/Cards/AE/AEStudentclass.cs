@@ -23,7 +23,7 @@ namespace TCTC.Cards.AE
         internal static string name = "AE";
         public override IEnumerator Init()
         {
-            while (!(AEStudentclass.card && Statics.card && Dynamics.card && Calc1p1.card && Calc1p2.card && Calc2.card && Linalg.card)) yield return null;
+            while (!(AEStudentclass.card && Statics.card && Dynamics.card && Calc1p1.card && Calc1p2.card && Calc2.card && Linalg.card && DE.card && Propstat.card && Materials.card && MOM.card && Intro1.card && Intro2.card && Thermo.card && Electro.card && ADSEE1.card && ADSEE2.card && Aero1.card && Aero2.card && DAC.card && EAE.card )) yield return null;
             
             //base class
             ClassesRegistry.Register(AEStudentclass.card, CardType.Entry);
@@ -163,6 +163,8 @@ namespace TCTC.Cards.AE
             ClassesRegistry.Get(DAC.card).Blacklist(EAE.card);
             ClassesRegistry.Get(EAE.card).Blacklist(DAC.card);
             //project 2 slot (15 ECTS)
+            ClassesRegistry.Get(Systemdes.card).Blacklist(Testandsym.card);
+            ClassesRegistry.Get(Testandsym.card).Blacklist(Systemdes.card);
 
             //minor (15 ECTS)
 

@@ -72,7 +72,7 @@ namespace TCTC.MonoBehaviors
                     q.range = 10f * data.maxHealth/100;
                     detonator.AddComponent<RUDcleanup>();
 
-                    //Explosion effect setup:
+                    //Explosion visual effect setup:
                     GameObject explosion = explosionCard.GetComponent<Gun>().objectsToSpawn[0].effect;
 
                     //Boom

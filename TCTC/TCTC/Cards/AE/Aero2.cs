@@ -70,7 +70,7 @@ namespace TCTC.Cards.AE
                 
                 new CardInfoStat()
                 {
-                    positive = false,
+                    positive = true,
                     stat = "Movement speed",
                     amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned

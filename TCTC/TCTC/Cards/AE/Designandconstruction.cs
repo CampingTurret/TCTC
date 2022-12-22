@@ -58,7 +58,7 @@ namespace TCTC.Cards.AE
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return TCTCards.DACArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -77,7 +77,7 @@ namespace TCTC.Cards.AE
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
+                    positive = false,
                     stat = "Stress damage",
                     amount = "10",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
