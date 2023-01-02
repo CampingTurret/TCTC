@@ -21,7 +21,7 @@ Balance changes
 
 - DesignSpace
 	- Increased health (400% to 600%)
-	- Increased Damage (-95% to -90%)
+	- Increased Damage (-95% to -80%)
 
 Added dependencies
 
@@ -54,6 +54,9 @@ new cards
 	- Exploring Aerospace Engineering
 	- Systems Design
 	- Test, Analysis and Simulation
+	- Minor
+	- Flight and Orbital Mechanics
+	- Power and Propulsion
 
 
 new art

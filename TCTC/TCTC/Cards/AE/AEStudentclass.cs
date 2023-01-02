@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnityEditor;
 using TCTC.MonoBehaviors;
 using TCTC.Cards;
 using ClassesManagerReborn;
@@ -23,8 +24,15 @@ namespace TCTC.Cards.AE
         internal static string name = "AE";
         public override IEnumerator Init()
         {
+            UnityEngine.Debug.Log("Initialising TCTC Class");
             while (!(AEStudentclass.card && Statics.card && Dynamics.card && Calc1p1.card && Calc1p2.card && Calc2.card && Linalg.card && DE.card && Propstat.card && Materials.card && MOM.card && Intro1.card && Intro2.card && Thermo.card && Electro.card && ADSEE1.card && ADSEE2.card && Aero1.card && Aero2.card && DAC.card && EAE.card )) yield return null;
-            
+
+            //int[][] x1 = new int[][] { new int[] { 1 }, new int[] { 2 } };
+            //int[][] x2 = new int[][] { new int[] { 3 }, new int[] { 4 } };
+            //int[][] x3 = generatereqtreeTEST(new List<int[][]> { x1, x2 });
+            //UnityEngine.Debug.Log(x3);
+         
+
             //base class
             ClassesRegistry.Register(AEStudentclass.card, CardType.Entry);
 
@@ -44,10 +52,10 @@ namespace TCTC.Cards.AE
             //math 3 slot (10 ECTS) 
             ClassesRegistry.Register(DE.card, CardType.Branch, math2, 1);
             ClassesRegistry.Register(Propstat.card, CardType.Branch, math2, 1);
-            CardInfo[][] math3 = new CardInfo[][] { new CardInfo[] { Calc2.card }, new CardInfo[] { Linalg.card } };
+            CardInfo[][] math3 = new CardInfo[][] { new CardInfo[] { DE.card }, new CardInfo[] { Propstat.card } };
 
             //materials slot (10ECTS) 
-            CardInfo[][] matreq = generatereqtree(new List<CardInfo[][]> {math1, mechanics});
+            CardInfo[][] matreq = generatereqtree(new List<CardInfo[][]> { math1, mechanics }); //new CardInfo[][] { new CardInfo[] { Statics.card, Calc1p1.card }, new CardInfo[] { Statics.card, Calc1p2.card }, new CardInfo[] { Dynamics.card, Calc1p1.card }, new CardInfo[] { Dynamics.card, Calc1p2.card } };
             ClassesRegistry.Register(Materials.card, CardType.Branch, matreq, 1);
             ClassesRegistry.Register(MOM.card, CardType.Branch, matreq, 1);
             CardInfo[][] mat = new CardInfo[][] { new CardInfo[] { MOM.card }, new CardInfo[] { Materials.card } };
@@ -63,9 +71,8 @@ namespace TCTC.Cards.AE
             CardInfo[][] phys1 = new CardInfo[][] { new CardInfo[] { Thermo.card }, new CardInfo[] { Electro.card } };
 
             //ADSEE (15ECTS)
-            CardInfo[][] Adseereq = generatereqtree(new List<CardInfo[][]> { math1, mechanics });
-            ClassesRegistry.Register(ADSEE1.card, CardType.Branch, Adseereq, 1);
-            ClassesRegistry.Register(ADSEE2.card, CardType.Branch, Adseereq, 1);
+            ClassesRegistry.Register(ADSEE1.card, CardType.Branch, matreq, 1);
+            ClassesRegistry.Register(ADSEE2.card, CardType.Branch, matreq, 1);
             CardInfo[][] ADSEE = new CardInfo[][] { new CardInfo[] { ADSEE1.card }, new CardInfo[] { ADSEE2.card } };
             //aerodynamics slot (10 ECTS)
             CardInfo[][] Aeroreq = generatereqtree(new List<CardInfo[][]> { phys1, mechanics, math2});
@@ -74,20 +81,29 @@ namespace TCTC.Cards.AE
             CardInfo[][] Aero = new CardInfo[][] { new CardInfo[] { Aero1.card }, new CardInfo[] { Aero2.card } };
 
             //Flight & Orbital Mechanics and Propulsion (10ECTS)
+            CardInfo[][] FOMPreq = generatereqtree(new List<CardInfo[][]> { Aero, math3 });
+            ClassesRegistry.Register(PAP.card, CardType.Branch, Aeroreq, 1);
+            ClassesRegistry.Register(FOAM.card, CardType.Branch, Aeroreq, 1);
+            CardInfo[][] FOMP = new CardInfo[][] { new CardInfo[] { PAP.card }, new CardInfo[] { FOAM.card } };
 
             //project 1 slot (15 ECTS)
             ClassesRegistry.Register(DAC.card, CardType.Branch, AEStudentclass.card, 1);
             ClassesRegistry.Register(EAE.card, CardType.Branch, AEStudentclass.card, 1);
             CardInfo[][] project1 = new CardInfo[][] { new CardInfo[] { DAC.card }, new CardInfo[] { EAE.card } };
             //project 2 slot (15 ECTS)
-            CardInfo[][] prj2req = generatereqtree(new List<CardInfo[][]> { phys1, mechanics, math2, project1, intro});
+            CardInfo[][] prj2req = generatereqtree(new List<CardInfo[][]> { mechanics, math2, project1, intro});
             ClassesRegistry.Register(Systemdes.card, CardType.Branch, prj2req, 1);
             ClassesRegistry.Register(Testandsym.card, CardType.Branch, prj2req, 1);
             CardInfo[][] project2 = new CardInfo[][] { new CardInfo[] { Systemdes.card }, new CardInfo[] { Testandsym.card } };
 
             //minor (15 ECTS)
+            ClassesRegistry.Register(MinorAE.card, CardType.Branch, project2, 1);
 
             //flight dynamics (15ECTS)
+            CardInfo[][] FDrq = generatereqtree(new List<CardInfo[][]> { mechanics, math3, project2, intro, ADSEE, FOMP });
+            ClassesRegistry.Register(SIM.card, CardType.Branch, FDrq, 1);
+            ClassesRegistry.Register(FlightD.card, CardType.Branch, FDrq, 1);
+            CardInfo[][] FD = new CardInfo[][] { new CardInfo[] { FlightD.card }, new CardInfo[] { SIM.card } };
 
             //DSE (15 ECTS)
 
@@ -96,32 +112,75 @@ namespace TCTC.Cards.AE
             //Extra credit? (ECTS outside of slots??)
             //TA buffs per ECTS
             //Student teams buffs per ECTS
-
+            UnityEngine.Debug.Log("Finished Initialising TCTC Class");
         }
 
         public CardInfo[][] generatereqtree(List<CardInfo[][]> Mainlists)
         {
-            CardInfo[][]  finallist = new CardInfo[][] {};
-            for (int i = 0; i < Mainlists.Count; i++)
+           
+            CardInfo[][] finallist = Mainlists[0];
+            for (int i = 1; i < Mainlists.Count; i++)
             {
                 finallist = combination2lists(finallist, Mainlists[i]);
+               
+            }
+            return finallist;
+        }
+        public int[][] generatereqtreeTEST(List<int[][]> Mainlists)
+        {
+
+            int[][] finallist = Mainlists[0];
+            for (int i = 1; i < Mainlists.Count; i++)
+            {
+               
+                finallist = combination2listsTEST(finallist, Mainlists[i]);
 
             }
+            UnityEngine.Debug.Log("TESTING");
+            UnityEngine.Debug.Log("0-0 in array:" + finallist[0][0]);
+            UnityEngine.Debug.Log("1-0 in array:" + finallist[1][0]);
+            UnityEngine.Debug.Log("0-1 in array:" + finallist[0][1]);
+            UnityEngine.Debug.Log("1-1 in array:" + finallist[1][1]);
+            UnityEngine.Debug.Log("TEST FINISHED");
             return finallist;
         }
 
         public CardInfo[][] combination2lists(CardInfo[][] List1,CardInfo[][] List2)
         {
+            
             CardInfo[][] List3 = new CardInfo[][] {} ;
 
             for (int i = 0; i < List1.Length; i++)
             {
-
+                
                 for (int j = 0; j < List2.Length; j++)
                 {
-                    CardInfo[] temp = List1[i];
-                    temp.AddRangeToArray(List2[j]);
-                    List3.AddToArray(temp);
+
+                    CardInfo[] temparr = new CardInfo[] { };
+                    var temp = List1[i].ToList();
+
+                    temp.AddRange(List2[j]);
+                    temparr = temp.ToArray();
+                    List3 = List3.AddToArray(temparr);
+                }
+            }
+
+            return List3;
+        }
+        public int[][] combination2listsTEST(int[][] List1, int[][] List2)
+        {
+            int[][] List3 = new int[][] { };
+
+            for (int i = 0; i < List1.Length; i++)
+            {
+                for (int j = 0; j < List2.Length; j++)
+                {
+                    int[] temparr = new int[] {};
+                    var temp = List1[i].ToList();
+                    
+                    temp.AddRange(List2[j]);
+                    temparr = temp.ToArray();        
+                    List3 = List3.AddToArray(temparr);                                 
                 }
             }
 
@@ -158,7 +217,8 @@ namespace TCTC.Cards.AE
             ClassesRegistry.Get(Aero1.card).Blacklist(Aero2.card);
             ClassesRegistry.Get(Aero2.card).Blacklist(Aero1.card);
             //Flight & Orbital Mechanics and Propulsion
-
+            ClassesRegistry.Get(PAP.card).Blacklist(FOAM.card);
+            ClassesRegistry.Get(FOAM.card).Blacklist(PAP.card);
             //project1
             ClassesRegistry.Get(DAC.card).Blacklist(EAE.card);
             ClassesRegistry.Get(EAE.card).Blacklist(DAC.card);
@@ -167,10 +227,14 @@ namespace TCTC.Cards.AE
             ClassesRegistry.Get(Testandsym.card).Blacklist(Systemdes.card);
 
             //minor (15 ECTS)
-
+            //-single card-
+            
             //flight dynamics (15ECTS)
+            ClassesRegistry.Get(SIM.card).Blacklist(FlightD.card);
+            ClassesRegistry.Get(FlightD.card).Blacklist(SIM.card);
 
             //DSE (15 ECTS)
+            //-single card-
             yield break;
         }
     }

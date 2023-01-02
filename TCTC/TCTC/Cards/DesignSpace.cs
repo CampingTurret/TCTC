@@ -14,11 +14,10 @@ namespace TCTC.Cards
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been setup.");
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             statModifiers.health = 7f;
             statModifiers.sizeMultiplier = 2f;
-            gun.bulletDamageMultiplier = 0.10f;
+            gun.bulletDamageMultiplier = 0.20f;
             
 
 
@@ -26,12 +25,12 @@ namespace TCTC.Cards
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
+            
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            UnityEngine.Debug.Log($"[{TCTCards.ModInitials}][Card] {GetTitle()} has been removed from player {player.playerID}.");
+            
             //Run when the card is removed from the player
         }
 
@@ -73,7 +72,7 @@ namespace TCTC.Cards
                 {
                     positive = false,
                     stat = "Damage",
-                    amount = "-90%",
+                    amount = "-80%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

@@ -48,6 +48,7 @@ namespace TCTC.MonoBehaviors
 
             Stressing x = player.gameObject.AddComponent<Stressing>();
             x.damage = damage;
+            x.health = base.GetComponent<HealthHandler>();
             spawned = true;
 
         }
