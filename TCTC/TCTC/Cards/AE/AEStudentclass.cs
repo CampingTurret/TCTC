@@ -98,18 +98,22 @@ namespace TCTC.Cards.AE
 
             //minor (15 ECTS)
             ClassesRegistry.Register(MinorAE.card, CardType.Branch, project2, 1);
+            CardInfo[][] Minor = new CardInfo[][] { new CardInfo[] { MinorAE.card } };
 
             //flight dynamics (15ECTS)
-            CardInfo[][] FDrq = generatereqtree(new List<CardInfo[][]> { mechanics, math3, project2, intro, ADSEE, FOMP });
+            CardInfo[][] FDrq = generatereqtree(new List<CardInfo[][]> { mechanics, math3, intro, ADSEE, FOMP });
             ClassesRegistry.Register(SIM.card, CardType.Branch, FDrq, 1);
             ClassesRegistry.Register(FlightD.card, CardType.Branch, FDrq, 1);
             CardInfo[][] FD = new CardInfo[][] { new CardInfo[] { FlightD.card }, new CardInfo[] { SIM.card } };
 
             //DSE (15 ECTS)
+            CardInfo[][] DSEreq = generatereqtree(new List<CardInfo[][]> { FD, project2,mat, Minor});
+            ClassesRegistry.Register(DSE.card, CardType.Branch, DSEreq, 1);
 
             //standalone cards
-            //resit? (ECTS outside of slots??/gain 2 random subjects)
-            //Extra credit? (ECTS outside of slots??)
+            // -gain subject cards
+            ClassesRegistry.Register(ResitAE.card, CardType.Card, AEStudentclass.card);
+            ClassesRegistry.Register(BonusPointsAE.card, CardType.Card, AEStudentclass.card);
             //TA buffs per ECTS
             //Student teams buffs per ECTS
             UnityEngine.Debug.Log("Finished Initialising TCTC Class");
@@ -235,6 +239,8 @@ namespace TCTC.Cards.AE
 
             //DSE (15 ECTS)
             //-single card-
+
+            
             yield break;
         }
     }

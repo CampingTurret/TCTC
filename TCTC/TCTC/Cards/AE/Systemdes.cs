@@ -8,6 +8,7 @@ using UnboundLib.Cards;
 using UnityEngine;
 using TCTC.MonoBehaviors;
 using ClassesManagerReborn.Util;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 
 namespace TCTC.Cards.AE
 {
@@ -17,9 +18,13 @@ namespace TCTC.Cards.AE
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.movementSpeed = 2f;
-            gun.bulletDamageMultiplier = 1.2f;
+            statModifiers.movementSpeed = 1.5f;
+            gun.bulletDamageMultiplier = 1.4f;
             cardInfo.allowMultiple = false;
+            cardInfo.categories = new CardCategory[]
+            {
+                CustomCardCategories.instance.CardCategory("AEclass")
+            };
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -73,14 +78,14 @@ namespace TCTC.Cards.AE
                 {
                     positive = true,
                     stat = "Movement speed",
-                    amount = "+100%",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "+20%",
+                    amount = "+40%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

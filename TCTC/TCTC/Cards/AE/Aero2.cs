@@ -8,6 +8,7 @@ using UnboundLib.Cards;
 using UnityEngine;
 using TCTC.MonoBehaviors;
 using ClassesManagerReborn.Util;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 
 namespace TCTC.Cards.AE
 {
@@ -20,8 +21,13 @@ namespace TCTC.Cards.AE
         {
             statModifiers.movementSpeed = 2f;
             gun.projectileSpeed = 2f;
-            gun.drag = 1.5f;
+            gun.drag = 7.5f;  //need to test correct value on other pc (seems dependant on framerate -_- )
+            gun.dragMinSpeed = 0.01f;
             cardInfo.allowMultiple = false;
+            cardInfo.categories = new CardCategory[]
+            {
+                CustomCardCategories.instance.CardCategory("AEclass")
+            };
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -86,7 +92,7 @@ namespace TCTC.Cards.AE
                 {
                     positive = false,
                     stat = "Bullet drag",
-                    amount = "+50%",
+                    amount = "a lot of",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
@@ -100,7 +106,7 @@ namespace TCTC.Cards.AE
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.ColdBlue;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
         public override string GetModName()
         {

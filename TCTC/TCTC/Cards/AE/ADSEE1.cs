@@ -8,6 +8,7 @@ using UnboundLib.Cards;
 using UnityEngine;
 using TCTC.MonoBehaviors;
 using ClassesManagerReborn.Util;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 
 namespace TCTC.Cards.AE
 {
@@ -21,6 +22,10 @@ namespace TCTC.Cards.AE
             statModifiers.health = 1.3f;
             statModifiers.movementSpeed = 1.2f;
             cardInfo.allowMultiple = false;
+            cardInfo.categories = new CardCategory[]
+            {
+                CustomCardCategories.instance.CardCategory("AEclass")
+            };
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -91,7 +96,7 @@ namespace TCTC.Cards.AE
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.ColdBlue;
+            return CardThemeColor.CardThemeColorType.TechWhite;
         }
         public override string GetModName()
         {

@@ -27,6 +27,7 @@ namespace TCTC.Cards.AE
             cardInfo.allowMultiple = false;
             cardInfo.categories = new CardCategory[]
             {
+                CustomCardCategories.instance.CardCategory("AEclass"),
                 CustomCardCategories.instance.CardCategory("CardManipulation")
             };
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`

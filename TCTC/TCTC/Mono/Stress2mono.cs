@@ -32,6 +32,7 @@ namespace TCTC.MonoBehaviors
                 {
                     Startdamage();
                 }
+                timer = timer + Time.deltaTime;
             }
 
         }
@@ -41,21 +42,26 @@ namespace TCTC.MonoBehaviors
             data.health = data.maxHealth;
             spawned = false;
             timer = 0;
+            if(x!= null)
+            {
+                Destroy(x);
+            }
         }
 
         public void Startdamage()
         {
 
-            Stressing x = player.gameObject.AddComponent<Stressing>();
+            x = player.gameObject.AddComponent<Stressing>();
             x.damage = damage;
             x.health = base.GetComponent<HealthHandler>();
             spawned = true;
+            timer = 0;
 
         }
 
 
 
-
+        private Stressing x;
         bool spawned;
         float timer;
         public int damage;

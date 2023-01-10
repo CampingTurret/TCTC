@@ -9,19 +9,24 @@ using UnityEngine;
 using TCTC.MonoBehaviors;
 using ClassesManagerReborn.Util;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
+using ModdingUtils.Utils;
+using UnboundLib.Utils;
+using TMPro;
+using System.Collections.ObjectModel;
+using System.Reflection;
 
 namespace TCTC.Cards.AE
 {
-    class MOM : CustomCard
+    class DSE: CustomCard
     {
 
 
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 1.2f;
-            statModifiers.movementSpeed = 1.2f;
-            gun.percentageDamage = 0.10f;
+
+            gun.bulletDamageMultiplier = 1.5f;
+            statModifiers.health = 1.5f;
             cardInfo.allowMultiple = false;
             cardInfo.categories = new CardCategory[]
             {
@@ -31,19 +36,22 @@ namespace TCTC.Cards.AE
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            //Edits values on player when card is selected
+
+            //ECTS stuff
             if (player.GetComponent<ECTSmono>() != null)
             {
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(10); 
+                ECTS.IncreaseECTS(15); 
             }
-            //Edits values on player when card is selected
+            
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             if (player.GetComponent<ECTSmono>() != null)
             {
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(-10);
+                ECTS.IncreaseECTS(-15);
             }
             //Run when the card is removed from the player
         }
@@ -54,11 +62,11 @@ namespace TCTC.Cards.AE
 
         protected override string GetTitle()
         {
-            return "Mechanics of materials";
+            return "Design Synthesis";
         }
         protected override string GetDescription()
         {
-            return "Mutualy exclusive with materials";
+            return "The final project";
         }
         protected override GameObject GetCardArt()
         {
@@ -66,7 +74,7 @@ namespace TCTC.Cards.AE
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -75,30 +83,22 @@ namespace TCTC.Cards.AE
                 new CardInfoStat()
                 {
                     positive = true,
+                    stat = "Damage",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
                     stat = "Health",
-                    amount = "+20%",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Movement speed",
-                    amount = "+20%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Percent damage",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "ECTS",
-                    amount = "+10",
+                    amount = "+15",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
@@ -111,5 +111,6 @@ namespace TCTC.Cards.AE
         {
             return TCTCards.ModInitials;
         }
+
     }
 }

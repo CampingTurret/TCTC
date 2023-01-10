@@ -20,10 +20,13 @@ namespace TCTC.Cards
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            
-            
-            
-            
+
+            GameObject hat = Instantiate(TCTCards.HatObject, player.transform);
+            hat.transform.localPosition = new Vector3(0.25f, 0.35f, 0);
+            hat.transform.localScale = new Vector3(0.25f,0.25f,1);
+            hat.layer = 8;
+
+
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

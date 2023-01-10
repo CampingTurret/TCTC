@@ -31,13 +31,18 @@ namespace TCTC.MonoBehaviors
         public void IncreaseECTS(int delta)
         {
             ECTS = ECTS + delta;
-            if (ECTS >= 180)
+            if (ECTS >= 180 && !haton)
             {
-                
+                GameObject hat = Instantiate(TCTCards.HatObject, player.transform);
+                hat.transform.localPosition = new Vector3(0.25f, 0.35f, 0);
+                hat.transform.localScale = new Vector3(0.25f, 0.25f, 1);
+                hat.layer = 8;
+                haton = true;
+
             }
         }
-
-
+        public bool haton = false;
+        public GameObject hat;
         public int ECTS;
         public Block block;
         public Player player;

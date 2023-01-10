@@ -9,6 +9,7 @@ using UnityEngine;
 using TCTC.MonoBehaviors;
 using ClassesManagerReborn.Util;
 using ModdingUtils.MonoBehaviours;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 
 namespace TCTC.Cards.AE
 {
@@ -19,10 +20,12 @@ namespace TCTC.Cards.AE
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 1.3f;
-            statModifiers.movementSpeed = 1.2f;
             cardInfo.allowMultiple = false;
             statModifiers.gravity = 0.1f;
+            cardInfo.categories = new CardCategory[]
+            {
+                CustomCardCategories.instance.CardCategory("AEclass")
+            };
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -69,7 +72,7 @@ namespace TCTC.Cards.AE
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return TCTCards.FDArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -82,17 +85,11 @@ namespace TCTC.Cards.AE
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "health",
-                    amount = "+30%",
+                    stat = "Flight",
+                    amount = "True",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Movement speed",
-                    amount = "+20%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
+               
                 new CardInfoStat()
                 {
                     positive = true,

@@ -9,42 +9,41 @@ using UnityEngine;
 using TCTC.MonoBehaviors;
 using ClassesManagerReborn.Util;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
+using ModdingUtils.Utils;
 
 namespace TCTC.Cards.AE
 {
-    class MOM : CustomCard
+    class ResitAE : CustomCard
     {
 
 
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 1.2f;
-            statModifiers.movementSpeed = 1.2f;
-            gun.percentageDamage = 0.10f;
-            cardInfo.allowMultiple = false;
+            
             cardInfo.categories = new CardCategory[]
             {
-                CustomCardCategories.instance.CardCategory("AEclass")
+                CustomCardCategories.instance.CardCategory("CardManipulation")
             };
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            if (player.GetComponent<ECTSmono>() != null)
+            for (int i = 0; i < 2; i++)
             {
-                ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(10); 
+                CardInfo cardInfo = ModdingUtils.Utils.Cards.instance.NORARITY_GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, new Func<CardInfo, Player, Gun, GunAmmo, CharacterData, HealthHandler, Gravity, Block, CharacterStatModifiers, bool>(this.Condition), 1000);
+                if (cardInfo.categories.Intersect(ResitAE.yesCardCategories).Any<CardCategory>())
+                {
+                
+                    ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, false, "", 0f, 0f, true);
+                    CardBarUtils.instance.ShowAtEndOfPhase(player, cardInfo);
+                }   
             }
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            if (player.GetComponent<ECTSmono>() != null)
-            {
-                ECTSmono ECTS = player.GetComponent<ECTSmono>();
-                ECTS.IncreaseECTS(-10);
-            }
+            
             //Run when the card is removed from the player
         }
         public override void Callback()
@@ -54,11 +53,11 @@ namespace TCTC.Cards.AE
 
         protected override string GetTitle()
         {
-            return "Mechanics of materials";
+            return "Resit";
         }
         protected override string GetDescription()
         {
-            return "Mutualy exclusive with materials";
+            return "Redo some of your failed exams";
         }
         protected override GameObject GetCardArt()
         {
@@ -66,7 +65,7 @@ namespace TCTC.Cards.AE
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Uncommon;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -75,30 +74,8 @@ namespace TCTC.Cards.AE
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Health",
-                    amount = "+20%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Movement speed",
-                    amount = "+20%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Percent damage",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "ECTS",
-                    amount = "+10",
+                    stat = "AE subjects",
+                    amount = "+2",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
@@ -111,5 +88,20 @@ namespace TCTC.Cards.AE
         {
             return TCTCards.ModInitials;
         }
+
+        public bool Condition(CardInfo card, Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
+        {
+            return !card.categories.Intersect(ResitAE.noCardCategories).Any<CardCategory>() && card.categories.Intersect(ResitAE.yesCardCategories).Any<CardCategory>();
+        }
+        public static CardCategory[] noCardCategories = new CardCategory[]
+        {
+            CustomCardCategories.instance.CardCategory("CardManipulation"),
+            CustomCardCategories.instance.CardCategory("NoRandom")
+        };
+        public static CardCategory[] yesCardCategories = new CardCategory[]
+        {
+            CustomCardCategories.instance.CardCategory("AEclass")
+            
+        };
     }
 }

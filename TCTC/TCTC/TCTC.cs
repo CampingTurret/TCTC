@@ -46,6 +46,7 @@ namespace TCTC
         public static GameObject StreamlinedArt = Bundle.LoadAsset<GameObject>("C_Streamlined");
 
         //AE art
+        public static GameObject HatObject = Bundle.LoadAsset<GameObject>("TCTC_hat");
         public static GameObject StaticsArt = Bundle.LoadAsset<GameObject>("C_Statics");
         public static GameObject DyanmicsArt = Bundle.LoadAsset<GameObject>("C_Dynamics");
         public static GameObject DEArt = Bundle.LoadAsset<GameObject>("C_DE");
@@ -53,12 +54,14 @@ namespace TCTC
         public static GameObject Aero1Art = Bundle.LoadAsset<GameObject>("C_Aero1");
         public static GameObject Aero2Art = Bundle.LoadAsset<GameObject>("C_Aero2");
         public static GameObject AEArt = Bundle.LoadAsset<GameObject>("C_AE");
+        public static GameObject FDArt = Bundle.LoadAsset<GameObject>("C_FlightDynamics");
 
 
         //ui objects
         public static GameObject signal = Bundle.LoadAsset<GameObject>("TCTCsignal");
         public static GameObject signalcanvas = Bundle.LoadAsset<GameObject>("TCTCCanvas");
         
+
 
         void Awake()
         {
@@ -97,7 +100,7 @@ namespace TCTC
 
 
             //AE class
-            CustomCard.BuildCard<AEStudentclass>((card) => AEStudentclass.card = card);    //
+            CustomCard.BuildCard<AEStudentclass>((card) => AEStudentclass.card = card);    //art
             CustomCard.BuildCard<Statics>((card) => Statics.card = card);                  //art
             CustomCard.BuildCard<Dynamics>((card) => Dynamics.card = card);                //art
             CustomCard.BuildCard<Calc1p1>((card) => Calc1p1.card = card);                  //
@@ -115,7 +118,7 @@ namespace TCTC
             CustomCard.BuildCard<ADSEE1>((card) => ADSEE1.card = card);                    //
             CustomCard.BuildCard<ADSEE2>((card) => ADSEE2.card = card);                    //
             CustomCard.BuildCard<Aero1>((card) => Aero1.card = card);                      //art
-            CustomCard.BuildCard<Aero2>((card) => Aero2.card = card);                      //
+            CustomCard.BuildCard<Aero2>((card) => Aero2.card = card);                      //art
             CustomCard.BuildCard<EAE>((card) => EAE.card = card);                          //
             CustomCard.BuildCard<DAC>((card) => DAC.card = card);                          //art
             CustomCard.BuildCard<Systemdes>((card) => Systemdes.card = card);              //
@@ -124,7 +127,10 @@ namespace TCTC
             CustomCard.BuildCard<FOAM>((card) => FOAM.card = card);                        //
             CustomCard.BuildCard<PAP>((card) => PAP.card = card);                          //
             CustomCard.BuildCard<SIM>((card) => SIM.card = card);                          //
-            CustomCard.BuildCard<FlightD>((card) => FlightD.card = card);                  //
+            CustomCard.BuildCard<FlightD>((card) => FlightD.card = card);                  //art
+            CustomCard.BuildCard<DSE>((card) => DSE.card = card);                          //
+            CustomCard.BuildCard<ResitAE>((card) => ResitAE.card = card);                  //
+            CustomCard.BuildCard<BonusPointsAE>((card) => BonusPointsAE.card = card);      //
 
 
 
