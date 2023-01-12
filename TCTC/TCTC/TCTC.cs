@@ -62,7 +62,7 @@ namespace TCTC
         public static GameObject signalcanvas = Bundle.LoadAsset<GameObject>("TCTCCanvas");
         
 
-
+        
         void Awake()
         {
             // Use this to call any harmony patch files your mod may have

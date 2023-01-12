@@ -25,8 +25,10 @@ namespace TCTC.Cards.AE
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
 
+            gun.bursts = 3;
+            gun.timeBetweenBullets = 0.5f;
+            gun.ammo = 4;
             gun.bulletDamageMultiplier = 1.5f;
-            statModifiers.health = 1.5f;
             cardInfo.allowMultiple = false;
             cardInfo.categories = new CardCategory[]
             {
@@ -90,8 +92,15 @@ namespace TCTC.Cards.AE
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Health",
-                    amount = "+50%",
+                    stat = "Ammo",
+                    amount = "+4",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                 new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Bullets",
+                    amount = "+2",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

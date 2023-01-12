@@ -18,7 +18,7 @@ namespace TCTC.Cards.AE
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.projectileSpeed = 4f;
+            gun.projectileSpeed = 6f;
             cardInfo.allowMultiple = false;
             cardInfo.categories = new CardCategory[]
             {
@@ -72,7 +72,7 @@ namespace TCTC.Cards.AE
                 {
                     positive = true,
                     stat = "Bullet speed",
-                    amount = "+400%",
+                    amount = "+500%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()

@@ -2,6 +2,16 @@
 
 ## V 2.0.0
 
+Thunderstore
+
+- changelog 
+	- the old readme has been moved to this changelog
+- readme
+	- new readme
+- discription
+	- added the AE class to the discription
+
+
 fixes
 
 - Rapid unplanned disasembly
