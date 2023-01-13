@@ -59,3 +59,9 @@
 - Rapid Unplanned Disassembly
 	- Blocking causes you to blow up
 
+
+
+## Known issues
+
+- AE class 
+	- the balance still is all over the place
