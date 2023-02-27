@@ -1,6 +1,6 @@
 {
   "name": "TCTC",
-  "version_number": "2.0.0",
+  "version_number": "2.0.1",
   "website_url": "",
   "description": "Adds 13 cards. Also adds a class with 31 cards. Has a engineering student theme.",
   "dependencies": [

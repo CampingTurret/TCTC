@@ -32,16 +32,20 @@ namespace TCTC.Cards.AE
             {
                 player.gameObject.AddComponent<ECTSmono>();
             }
+            ECTSmono ects = player.GetComponent<ECTSmono>();
+            ects.damagemod *= 1.01f;
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             Destroy(player.GetComponent<ECTSmono>());
+            
             //Run when the card is removed from the player
         }
         public override void Callback()
         {
             gameObject.GetOrAddComponent<ClassNameMono>();
+            
         }
 
         protected override string GetTitle()
@@ -69,6 +73,13 @@ namespace TCTC.Cards.AE
                     positive = true,
                     stat = "Movement speed",
                     amount = "+20%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Damage per ECTS (multiplicative)",
+                    amount = "+1%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

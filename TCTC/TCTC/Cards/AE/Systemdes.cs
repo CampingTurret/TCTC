@@ -18,7 +18,7 @@ namespace TCTC.Cards.AE
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.movementSpeed = 1.5f;
+            statModifiers.movementSpeed = 1.3f;
             gun.bulletDamageMultiplier = 1.4f;
             cardInfo.allowMultiple = false;
             cardInfo.categories = new CardCategory[]
@@ -34,9 +34,7 @@ namespace TCTC.Cards.AE
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
                 ECTS.IncreaseECTS(15); 
             }
-            Stress2mono x = player.gameObject.AddComponent<Stress2mono>();
-            x.damage = 20;
-            x.timetildot = 30;
+           
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -78,7 +76,7 @@ namespace TCTC.Cards.AE
                 {
                     positive = true,
                     stat = "Movement speed",
-                    amount = "+50%",
+                    amount = "+30%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
@@ -88,20 +86,7 @@ namespace TCTC.Cards.AE
                     amount = "+40%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Stress damage",
-                    amount = "20",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "time until stress",
-                    amount = "30s",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
+               
                 new CardInfoStat()
                 {
                     positive = true,

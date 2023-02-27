@@ -18,7 +18,7 @@ namespace TCTC.Cards.AE
         public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 3f;
+            statModifiers.health = 2.5f;
             cardInfo.allowMultiple = false;
             cardInfo.categories = new CardCategory[]
             {
@@ -33,9 +33,7 @@ namespace TCTC.Cards.AE
                 ECTSmono ECTS = player.GetComponent<ECTSmono>();
                 ECTS.IncreaseECTS(15); 
             }
-            Stressmono x = player.gameObject.AddComponent<Stressmono>();
-            x.damage = 10;
-            x.timetildot = 15;
+           
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -77,23 +75,10 @@ namespace TCTC.Cards.AE
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+200%",
+                    amount = "+150%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Stress damage",
-                    amount = "10",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "time until stress",
-                    amount = "15s",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
+                
                 new CardInfoStat()
                 {
                     positive = true,

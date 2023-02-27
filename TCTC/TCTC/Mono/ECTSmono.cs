@@ -8,17 +8,21 @@ using UnityEngine;
 using UnboundLib.Utils;
 using System.Collections.ObjectModel;
 using ModdingUtils.RoundsEffects;
+using ModdingUtils.Extensions;
+using ModdingUtils.MonoBehaviours;
 
 namespace TCTC.MonoBehaviors
 {
-    public class ECTSmono : MonoBehaviour
+    public class ECTSmono : ReversibleEffect
     {
-        private void Awake()
+        public override void OnStart()
         {
+            SetLivesToEffect(int.MaxValue);
             this.player = base.GetComponent<Player>();
             this.block = base.GetComponent<Block>();
             this.data = base.GetComponent<CharacterData>();
             this.gun = base.GetComponent<Gun>();
+
         }
 
 
@@ -30,7 +34,16 @@ namespace TCTC.MonoBehaviors
 
         public void IncreaseECTS(int delta)
         {
+
             ECTS = ECTS + delta;
+            ClearModifiers();
+            gunStatModifier.damage_mult = (float)Math.Pow(damagemod, ECTS);
+            characterDataModifier.maxHealth_mult = (float)Math.Pow(healthmod, ECTS);
+           // gunStatModifier.damage_mult = gun.bulletDamageMultiplier * (float)Math.Pow(damagemod, ECTS);
+           // characterDataModifier.maxHealth_mult = (float)Math.Pow(healthmod, ECTS);
+            ApplyModifiers();
+            
+
             if (ECTS >= 180 && !haton)
             {
                 GameObject hat = Instantiate(TCTCards.HatObject, player.transform);
@@ -48,10 +61,15 @@ namespace TCTC.MonoBehaviors
         public Player player;
         public CharacterData data;
         public Gun gun; 
+        public CharacterStatModifiers CharacterStatModifiers;
+        public float damagemod = 1;
+        public float healthmod = 1;
 
 
 
 
 
     }
+
+  
 }

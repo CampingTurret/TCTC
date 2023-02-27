@@ -1,5 +1,19 @@
 # TCTC
 
+
+## V 2.0.1
+
+Balance changes
+
+- AE class 
+	- Projects
+		- removed the stress damage 
+		- decreased health of Design and construction (+200% to + 150%)
+		- decreased movement speed of Systems Design (+50% to +30%)
+
+	- AE class card
+		- Added damage per ECTS (+0% to +1%)
+
 ## V 2.0.0
 
 Thunderstore
