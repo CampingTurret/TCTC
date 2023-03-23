@@ -1,7 +1,7 @@
 {
   "name": "TCTC",
   "version_number": "2.0.1",
-  "website_url": "",
+  "website_url": "https://github.com/CampingTurret/TCTC",
   "description": "Adds 13 cards. Also adds a class with 31 cards. Has a engineering student theme.",
   "dependencies": [
     "willis81808-MMHook-1.0.0",
