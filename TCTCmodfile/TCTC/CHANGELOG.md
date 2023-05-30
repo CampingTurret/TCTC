@@ -1,5 +1,21 @@
 # TCTC
 
+## V 2.1.0
+
+New card
+- Reentry
+
+Removed cards
+- AE student class 
+	- Resit
+	- Bonus points
+
+Fixes
+- Compact teleporter
+	- Wall colision during teleport disabled
+- Guess cards
+	- Buffs now correctly synced between playes
+
 
 ## V 2.0.1
 

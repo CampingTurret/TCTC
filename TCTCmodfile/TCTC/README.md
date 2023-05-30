@@ -32,8 +32,6 @@
 	- Simulation, Verification and Validation
 	- Flight Dynamics
 	- DSE
-	- Resit
-	- Bonus Points
 - Assumptions
 - Guess cards
 	- Blind guess (50/50)
@@ -48,6 +46,7 @@
 - Class II weight estimation
 - Compact Teleporter
 - DesignSpace
+- Re-Entry
 
 
 ## Note
@@ -65,3 +64,5 @@
 
 - AE class 
 	- the balance still is all over the place
+- Guess cards 
+	- Effect is still playersided

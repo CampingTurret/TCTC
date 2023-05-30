@@ -8,6 +8,7 @@ using UnityEngine;
 using UnboundLib.Utils;
 using System.Collections.ObjectModel;
 using ModdingUtils.RoundsEffects;
+using UnboundLib.Networking;
 
 namespace TCTC.MonoBehaviors
 {
@@ -22,7 +23,34 @@ namespace TCTC.MonoBehaviors
             timer = 0f;
 
         }
+        [UnboundRPC]
+        public static void Spawn_Effect(float range, int playerID)
+        {
 
+            Player player = null;
+            GameObject[] playerlist = GameObject.FindGameObjectsWithTag("Player");
+            for (int i = 0; i < playerlist.Length; i++)
+            {
+                GameObject Object_with_tag = playerlist[i];
+                if (Object_with_tag.GetComponent<Player>().playerID == playerID)
+                {
+                    player = Object_with_tag.GetComponent<Player>();
+                }
+
+            }
+            switch (Math.Floor(Math.Round(range)))
+            {
+                case 1:
+                    player.gameObject.AddComponent<guess1>();
+                    break;
+                case 2:
+                    player.gameObject.AddComponent<guess4>();
+                    break;
+                case 3:
+                    player.gameObject.AddComponent<guess5>();
+                    break;
+            }
+        }
         private void Update()
         {
 
@@ -31,26 +59,17 @@ namespace TCTC.MonoBehaviors
 
             if (timer > 5f)
             {
-
-                a = UnityEngine.Random.Range(0.6f, 3.4f);
-                switch (Math.Floor(Math.Round(a)))
+                if (player.data.view.IsMine)
                 {
-                    case 1:
-                        player.gameObject.AddComponent<guess1>();
-                        timer = 0f;
-                        break;
-                    case 2:
-                        player.gameObject.AddComponent<guess5>();
-                        timer = 0f;
-                        break;
-                    case 3:
-                        player.gameObject.AddComponent<guess4>();
-                        timer = 0f;
-                        break;
-                    
-                    
-
+                    a = UnityEngine.Random.Range(0.6f, 3.4f);
+                    NetworkingManager.RPC(typeof(noguessworkmono), nameof(Spawn_Effect), new object[]
+                    {
+                        a,
+                        player.playerID
+                    });
                 }
+                timer = 0f;
+
 
 
             }

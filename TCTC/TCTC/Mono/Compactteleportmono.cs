@@ -23,7 +23,7 @@ namespace TCTC.MonoBehaviors
 
         public override void Hit(Vector2 position, Vector2 normal, Vector2 velocity)
         {
-            
+            player.GetComponentInParent<PlayerCollision>().IgnoreWallForFrames(2);
             player.transform.position = position;
 
             

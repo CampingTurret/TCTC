@@ -9,6 +9,9 @@ using UnboundLib.Utils;
 using System.Collections.ObjectModel;
 using ModdingUtils.RoundsEffects;
 using ModdingUtils.MonoBehaviours;
+using UnboundLib.Networking;
+using Photon.Realtime;
+using System.Reflection;
 
 namespace TCTC.MonoBehaviors
 {
@@ -24,6 +27,51 @@ namespace TCTC.MonoBehaviors
             
         }
 
+        [UnboundRPC]
+        public static void Spawn_Effect(float range, int playerID)
+        {
+  
+            Player player = null;
+            GameObject[] playerlist = GameObject.FindGameObjectsWithTag("Player");
+            for(int i = 0; i < playerlist.Length; i++)
+            {
+                GameObject Object_with_tag = playerlist[i];
+                if (Object_with_tag.GetComponent<Player>().playerID == playerID)
+                {
+                    player = Object_with_tag.GetComponent<Player>();
+                }
+
+            }
+            switch (Math.Floor(Math.Round(range)))
+            {
+                case 1:
+                    player.gameObject.AddComponent<guess1>();
+                    
+                    break;
+                case 2:
+                    player.gameObject.AddComponent<guess2>();
+                    
+                    break;
+                case 3:
+                    player.gameObject.AddComponent<guess3>();
+                    
+                    break;
+                case 4:
+                    player.gameObject.AddComponent<guess4>();
+                    
+                    break;
+                case 5:
+                    player.gameObject.AddComponent<guess5>();
+                    break;
+                case 6:
+                    player.gameObject.AddComponent<guess6>();  
+                    break;
+
+            }
+        }
+
+
+
         private void Update()
         {
 
@@ -32,40 +80,18 @@ namespace TCTC.MonoBehaviors
 
             if (timer > 5f)
             {
-
-                a = UnityEngine.Random.Range(0.6f, 6.4f);
-
-                
-                switch (Math.Floor(Math.Round(a)))
+                if (player.data.view.IsMine)
                 {
-                    case 1:
-                        player.gameObject.AddComponent<guess1>();
-                        timer = 0f;
-                        break;
-                    case 2:
-                        player.gameObject.AddComponent<guess2>();
-                        timer = 0f;
-                        break;
-                    case 3:
-                        player.gameObject.AddComponent<guess3>();
-                        timer = 0f;
-                        break;
-                    case 4:
-                        player.gameObject.AddComponent<guess4>();
-                        timer = 0f;
-                        break;
-                    case 5:
-                        player.gameObject.AddComponent<guess5>();
-                        timer = 0f;
-
-                        break;
-                    case 6:
-                        player.gameObject.AddComponent<guess6>();
-                        timer = 0f;
-                        break;
-
+                    a = UnityEngine.Random.Range(0.6f, 6.4f);
+                    NetworkingManager.RPC(typeof(Blindguessmono), nameof(Spawn_Effect), new object[]
+                    {
+                        a,
+                        player.playerID
+                    });
                 }
-
+                timer = 0f;
+                
+             
                 
             }
 
@@ -74,7 +100,7 @@ namespace TCTC.MonoBehaviors
 
 
 
-
+         
 
         private float a;
         private float dt;
