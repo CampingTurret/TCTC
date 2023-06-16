@@ -112,8 +112,8 @@ namespace TCTC.Cards.AE
 
             //standalone cards
             // -gain subject cards
-            ClassesRegistry.Register(ResitAE.card, CardType.Card, AEStudentclass.card);
-            ClassesRegistry.Register(BonusPointsAE.card, CardType.Card, AEStudentclass.card);
+            //ClassesRegistry.Register(ResitAE.card, CardType.Card, AEStudentclass.card);
+            //ClassesRegistry.Register(BonusPointsAE.card, CardType.Card, AEStudentclass.card);
             //TA buffs per ECTS
             //Student teams buffs per ECTS
             UnityEngine.Debug.Log("Finished Initialising TCTC Class");

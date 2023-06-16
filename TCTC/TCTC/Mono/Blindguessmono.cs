@@ -22,7 +22,6 @@ namespace TCTC.MonoBehaviors
             this.player = base.GetComponent<Player>();
             this.block = base.GetComponent<Block>();
             this.data = base.GetComponent<CharacterData>();
-            this.gun = base.GetComponent<Gun>();
             timer = 0f;
             
         }
@@ -109,7 +108,6 @@ namespace TCTC.MonoBehaviors
         public Block block;
         public Player player;
         public CharacterData data;
-        public Gun gun; 
 
 
 

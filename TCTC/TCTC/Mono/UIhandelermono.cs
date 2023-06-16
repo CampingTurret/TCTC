@@ -24,7 +24,6 @@ namespace TCTC.MonoBehaviors
             this.player = base.GetComponent<Player>();
             this.block = base.GetComponent<Block>();
             this.data = base.GetComponent<CharacterData>();
-            this.gun = base.GetComponent<Gun>();
             numcount = 0;
             updatetimer = 0.2f;
             active = true;

@@ -3,7 +3,7 @@
 ## V 2.1.0
 
 New card
-- Reentry
+- Re-entry
 
 Removed cards
 - AE student class 
@@ -14,7 +14,7 @@ Fixes
 - Compact teleporter
 	- Wall colision during teleport disabled
 - Guess cards
-	- Buffs now correctly synced between playes
+	- Buffs now correctly synced between players
 
 
 ## V 2.0.1
@@ -199,7 +199,7 @@ Balance changes to
 - Assumption
 	- changed the cooldown multiplier (-30% to -20%)
 
-Added this readme : )
+Added this readme :)
 
 Added new card
 

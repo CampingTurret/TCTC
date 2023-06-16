@@ -60,9 +60,13 @@ namespace TCTC
         //ui objects
         public static GameObject signal = Bundle.LoadAsset<GameObject>("TCTCsignal");
         public static GameObject signalcanvas = Bundle.LoadAsset<GameObject>("TCTCCanvas");
-        
 
-        
+        //Insert vehicles
+        public static GameObject Drop_Pod = Bundle.LoadAsset<GameObject>("TCTC_Drop_Pod");
+        public static GameObject Parashute = Bundle.LoadAsset<GameObject>("TCTC_Parashute");
+
+
+
         void Awake()
         {
             // Use this to call any harmony patch files your mod may have
@@ -79,6 +83,10 @@ namespace TCTC
             foreach (var Stress in FindObjectsOfType<Stress2mono>())
             {
                 Stress.Starttimer();
+            }
+            foreach(var Reentry in FindObjectsOfType<Reentrymono>())
+            {
+                Reentry.Set_Outofbounds();
             }
             yield break;
         }
@@ -130,8 +138,8 @@ namespace TCTC
             CustomCard.BuildCard<SIM>((card) => SIM.card = card);                          //
             CustomCard.BuildCard<FlightD>((card) => FlightD.card = card);                  //art
             CustomCard.BuildCard<DSE>((card) => DSE.card = card);                          //
-            CustomCard.BuildCard<ResitAE>((card) => ResitAE.card = card);                  //
-            CustomCard.BuildCard<BonusPointsAE>((card) => BonusPointsAE.card = card);      //
+            //CustomCard.BuildCard<ResitAE>((card) => ResitAE.card = card);                  //
+            //CustomCard.BuildCard<BonusPointsAE>((card) => BonusPointsAE.card = card);      //
 
 
 

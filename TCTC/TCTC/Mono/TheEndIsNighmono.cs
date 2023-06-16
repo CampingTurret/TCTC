@@ -18,7 +18,7 @@ namespace TCTC.MonoBehaviors
             this.player = base.GetComponent<Player>();
             this.block = base.GetComponent<Block>();
             this.data = base.GetComponent<CharacterData>();
-            this.gun = base.GetComponent<Gun>();
+            this.gun = data.weaponHandler.gun;
             this.health = base.GetComponent<HealthHandler>();
             secondstodeath = 20f;
             damagecolor = Color.red;
