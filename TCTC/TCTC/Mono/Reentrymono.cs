@@ -131,10 +131,10 @@ namespace TCTC.MonoBehaviors
 
                         int insertoption;
 
-                        RaycastHit2D hit = Physics2D.Raycast((Vector2)spawn.transform.position, Vector2.up, 200);
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)spawn.transform.position, Vector2.up, 200f);
                         if (hit.collider)
                         {
-                            insertoption = UnityEngine.Random.Range(-2, -1);
+                            insertoption = -2; // UnityEngine.Random.Range(-2, -1);
                         }
                         else 
                         {
@@ -164,10 +164,7 @@ namespace TCTC.MonoBehaviors
         }
         public void Set_Outofbounds()
         {
-            if(this.outofbounds == null)
-            {
-                this.outofbounds = player.data.GetAdditionalData().outOfBoundsHandler;
-            }
+            this.outofbounds = player.data.GetAdditionalData().outOfBoundsHandler;
         }
 
 

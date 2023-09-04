@@ -64,5 +64,3 @@
 
 - AE class 
 	- the balance still is all over the place
-- Guess cards 
-	- Effect is still playersided

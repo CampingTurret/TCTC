@@ -5,6 +5,9 @@
 New card
 - Re-entry
 
+new art
+- Re-entry
+
 Removed cards
 - AE student class 
 	- Resit

@@ -12,14 +12,20 @@ using UnboundLib.GameModes;
 using ModdingUtils.GameModes;
 using Photon.Pun;
 using System.Collections;
+using BepInEx.Bootstrap;
 
 namespace TCTC
 {
-    // These are the mods required for our mod to work
+    //Hard Dependency's
     [BepInDependency("com.willis.rounds.unbound", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.moddingutils", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("root.classes.manager.reborn", BepInDependency.DependencyFlags.HardDependency)]
+
+    //Soft Dependency's
+    [BepInDependency("TheCampingTurret.Rounds.TCTPP.patch", BepInDependency.DependencyFlags.SoftDependency)]
+
+
 
     // Declares our mod to Bepin
     [BepInPlugin(ModId, ModName, Version)]
@@ -33,6 +39,10 @@ namespace TCTC
         public const string Version = "2.1.0"; // What version are we on (major.minor.patch)?
         public const string ModInitials = "TCTC";
 
+        public const string TCTPPID = "TheCampingTurret.Rounds.TCTPP.patch";
+        public bool TCTPP_Present = false;
+
+
         private static readonly AssetBundle Bundle = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("tctc", typeof(TCTCards).Assembly);
 
         //card art
@@ -44,6 +54,7 @@ namespace TCTC
         public static GameObject Class2Art = Bundle.LoadAsset<GameObject>("C_Class2");
         public static GameObject AssumptionArt = Bundle.LoadAsset<GameObject>("C_Assumption");
         public static GameObject StreamlinedArt = Bundle.LoadAsset<GameObject>("C_Streamlined");
+        public static GameObject ReEntryArt = Bundle.LoadAsset<GameObject>("C_Re-Entry");
 
         //AE art
         public static GameObject HatObject = Bundle.LoadAsset<GameObject>("TCTC_hat");
@@ -72,7 +83,15 @@ namespace TCTC
             // Use this to call any harmony patch files your mod may have
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
-            
+            foreach (var plugin in Chainloader.PluginInfos)
+            {
+                var metadata = plugin.Value.Metadata;
+                if (metadata.GUID.Equals(TCTPPID))
+                {
+                    TCTPP_Present = true;
+                    break;
+                }
+            }
             GameModeManager.AddHook(GameModeHooks.HookBattleStart, battlestart);
         }
         IEnumerator battlestart(IGameModeHandler gm)
@@ -105,7 +124,7 @@ namespace TCTC
             CustomCard.BuildCard<Noguesswork>();                                           //art
             CustomCard.BuildCard<Class2estimation>((card) => Class2estimation.card = card);//art
             CustomCard.BuildCard<RUD>();                                                   //
-            CustomCard.BuildCard<Reentry>();                                               //
+            CustomCard.BuildCard<Reentry>();                                               //art
 
 
             //AE class
@@ -142,8 +161,12 @@ namespace TCTC
             //CustomCard.BuildCard<BonusPointsAE>((card) => BonusPointsAE.card = card);      //
 
 
+            if (TCTPP_Present)
+            {
 
-            //CustomCard.BuildCard<Test>();
+            }
+
+            //CustomCard.BuildCard<Test>(); #error 
 
 
             instance = this;
