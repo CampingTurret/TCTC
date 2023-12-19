@@ -112,10 +112,9 @@ namespace TCTC.Cards.AE
 
             //standalone cards
             // -gain subject cards
-            //ClassesRegistry.Register(ResitAE.card, CardType.Card, AEStudentclass.card);
+            ClassesRegistry.Register(ResitAE.card, CardType.Card, AEStudentclass.card);
             //ClassesRegistry.Register(BonusPointsAE.card, CardType.Card, AEStudentclass.card);
             //TA buffs per ECTS
-            //Student teams buffs per ECTS
             UnityEngine.Debug.Log("Finished Initialising TCTC Class");
         }
 
@@ -231,8 +230,8 @@ namespace TCTC.Cards.AE
             ClassesRegistry.Get(Testandsym.card).Blacklist(Systemdes.card);
 
             //minor (15 ECTS)
-            //-single card-
-            
+            ClassesRegistry.Get(MinorAE.card).Blacklist(ResitAE.card);
+
             //flight dynamics (15ECTS)
             ClassesRegistry.Get(SIM.card).Blacklist(FlightD.card);
             ClassesRegistry.Get(FlightD.card).Blacklist(SIM.card);

@@ -47,6 +47,7 @@
 - Compact Teleporter
 - DesignSpace
 - Re-Entry
+- Rocket Launcher (only available if TurretsPhysicsPatch is installed)
 
 
 ## Note
@@ -60,7 +61,4 @@
 
 
 
-## Known issues
 
-- AE class 
-	- the balance still is all over the place

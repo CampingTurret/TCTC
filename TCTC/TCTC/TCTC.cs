@@ -36,7 +36,7 @@ namespace TCTC
         public static TCTCards instance { get; private set; }
         private const string ModId = "TheCampingTurret.Rounds.TCTC.cards";
         private const string ModName = "TCTCards";
-        public const string Version = "2.1.0"; // What version are we on (major.minor.patch)?
+        public const string Version = "2.2.0"; // What version are we on (major.minor.patch)?
         public const string ModInitials = "TCTC";
 
         public const string TCTPPID = "TheCampingTurret.Rounds.TCTPP.patch";
@@ -157,13 +157,13 @@ namespace TCTC
             CustomCard.BuildCard<SIM>((card) => SIM.card = card);                          //
             CustomCard.BuildCard<FlightD>((card) => FlightD.card = card);                  //art
             CustomCard.BuildCard<DSE>((card) => DSE.card = card);                          //
-            //CustomCard.BuildCard<ResitAE>((card) => ResitAE.card = card);                  //
+            CustomCard.BuildCard<ResitAE>((card) => ResitAE.card = card);                  //
             //CustomCard.BuildCard<BonusPointsAE>((card) => BonusPointsAE.card = card);      //
 
 
             if (TCTPP_Present)
             {
-
+                CustomCard.BuildCard<RocketLauncher>();                                    //
             }
 
             //CustomCard.BuildCard<Test>(); #error 

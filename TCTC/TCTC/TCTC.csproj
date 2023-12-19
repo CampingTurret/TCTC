@@ -47,6 +47,9 @@
     <Reference Include="RarityLib">
       <HintPath>..\..\..\..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\mod creation TCTC\BepInEx\plugins\Root-RarityLib\RarityLib.dll</HintPath>
     </Reference>
+    <Reference Include="TurretsPhysicsPatch">
+      <HintPath>..\..\..\TCTBulletDragPatch\TCTBulletDragPatch\TCTBulletDragPatch\TCTBulletDragPatch\bin\Debug\netstandard2.1\TurretsPhysicsPatch.dll</HintPath>
+    </Reference>
     <Reference Include="UnboundLib">
       <HintPath>..\..\..\..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\mod creation TCTC\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
     </Reference>

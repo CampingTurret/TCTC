@@ -1,5 +1,46 @@
 # TCTC
 
+
+## V 2.2.0
+
+New card
+- Rocket Launcher
+	- Only available if TurretsPhysicsPatch is installed
+
+- new art
+	- none :(
+
+Balance changes
+
+- Resit
+	- re-enabled 
+	- fix for duplicate or incompatable cards (hopefully)
+
+- Class II weight estimation
+	- increased health (+80% to +100%)
+	- decreased size (-10% to -20%)
+
+- Re-entry
+	- disallowed duplicates
+
+- Compact Teleporter
+	- disallowed duplicates
+	- increased ammo (+0 to +4)
+
+- Rapid unplanned disasembly
+	- User now explodes 0.5 seconds after last block
+		- this should fix the unintended interaction with multiple blocks
+	- Now also deals aditional direct damage to the user
+
+- Quadro acceleration
+	- increased health (-30% to -10%)
+
+- Streamlined
+	- increased health (-40% to -20%)
+
+- Design space
+	- damage increased (-80% to -75%)
+
 ## V 2.1.0
 
 New card

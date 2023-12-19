@@ -42,6 +42,7 @@ namespace TCTC.MonoBehaviors
         {
             
             TUD = true;
+            timer = 0.5f;
         }
         // set block trigger 
         // then explode player on block
@@ -79,8 +80,8 @@ namespace TCTC.MonoBehaviors
                     Instantiate(explosion, player.transform.position , player.transform.rotation);
                     Instantiate(detonator, player.transform.position , player.transform.rotation);
                     q.Explode();
-                    
 
+                    health.TakeDamage(new Vector2(data.maxHealth * 2 + 100, data.maxHealth * 2 + 100), player.transform.position,ignoreBlock: true);
 
 
                         

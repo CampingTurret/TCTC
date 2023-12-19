@@ -21,7 +21,7 @@ namespace TCTC.Cards.AE
         {
             statModifiers.movementSpeed = 2f;
             gun.projectileSpeed = 2f;
-            gun.drag = 7.5f;  //need to test correct value on other pc (seems dependant on framerate -_- )
+            gun.drag = 7.5f;  
             gun.dragMinSpeed = 0.01f;
             cardInfo.allowMultiple = false;
             cardInfo.categories = new CardCategory[]

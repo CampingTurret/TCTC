@@ -1,8 +1,8 @@
 {
   "name": "TCTC",
-  "version_number": "2.1.0",
+  "version_number": "2.2.0",
   "website_url": "https://github.com/CampingTurret/TCTC",
-  "description": "Adds 13 cards. Also adds a class with 31 cards. Has a engineering student theme.",
+  "description": "Adds 14 cards. Also adds a class with 31 cards. Has a engineering student theme. Also adds one extra card if TurretsPhysicsPatch is installed",
   "dependencies": [
     "willis81808-MMHook-1.0.0",
     "BepInEx-BepInExPack_ROUNDS-5.4.1900",

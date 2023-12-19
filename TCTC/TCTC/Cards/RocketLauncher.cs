@@ -8,24 +8,37 @@ using UnboundLib.Cards;
 using UnityEngine;
 using TCTC.MonoBehaviors;
 
+
 namespace TCTC.Cards
 {
-    class Class2estimation : CustomCard
+    class RocketLauncher : CustomCard
     {
-        public static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 2f;
-            statModifiers.movementSpeed = 0.8f;
-            statModifiers.sizeMultiplier = 0.8f;
-            statModifiers.gravity = 1.5f;
-
-            
-            
+            gun.gravity = 0f;
+            gun.bulletDamageMultiplier = 1.40f;
+            gun.projectileSpeed = 0.3f;
+            gun.ammo = -1;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            gun.attackSpeed *= 3f;
+            GameObject gameObject = (GameObject)Resources.Load("0 cards/Thruster");
+            List<ObjectsToSpawn> list = gun.objectsToSpawn.ToList<ObjectsToSpawn>();
+            list.Add(new ObjectsToSpawn
+            {
+               AddToProjectile = new GameObject("A_RocketLaunch", new Type[] { typeof(Rocketmono) })
+            });
+
+            ObjectsToSpawn obj1 = gameObject.GetComponent<Gun>().objectsToSpawn[0];
+            obj1.scaleFromDamage = 0;
+            obj1.stickToAllTargets = false;
+            //list.Add(obj1);
+            GameObject gameObject2 = (GameObject)Resources.Load("0 cards/Explosive bullet");
+            //gun.soundGun.AddSoundImpactModifier(gameObject2.GetComponent<Gun>().soundImpactModifier);
+            list.Add(gameObject2.GetComponent<Gun>().objectsToSpawn[0]);
+            gun.objectsToSpawn = list.ToArray();
             //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -35,15 +48,15 @@ namespace TCTC.Cards
 
         protected override string GetTitle()
         {
-            return "Class II weight estimation";
+            return "Rocket Launcher";
         }
         protected override string GetDescription()
         {
-            return "Less statistcs, more calculations";
+            return "Turn your gun into a rocket launcher. Based on SmartMario1's version";
         }
         protected override GameObject GetCardArt()
         {
-            return TCTCards.Class2Art;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -56,33 +69,32 @@ namespace TCTC.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Health",
-                    amount = "+100%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Size",
-                    amount = "-20%",
+                    stat = "Damage",
+                    amount = "+40%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Movement speed",
-                    amount = "-20%",
+                    stat = "Projectile speed",
+                    amount = "-70%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Gravity",
-                    amount = "+50%",
+                    stat = "Attack speed",
+                    amount = "-67%",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Ammo",
+                    amount = "-1",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
-
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
